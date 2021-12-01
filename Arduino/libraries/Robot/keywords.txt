@@ -1,0 +1,5 @@
+Robot	KEYWORD1
+left	KEYWORD2
+right	KEYWORD2
+forward	KEYWORD2
+hult	KEYWORD2

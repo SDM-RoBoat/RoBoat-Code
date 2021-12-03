@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\libraries",
+    "\\libraries\\IR_Sensor",
+    "\\libraries\\Motor",
+    "\\libraries\\Robot",
+    "\\libraries\\SonarSensor",
+    "\\Main"
+  ],
+  "SelectedNode": "\\libraries\\IR_Sensor\\IR_Sensor.cpp",
+  "PreviewInSolutionExplorer": false
+}

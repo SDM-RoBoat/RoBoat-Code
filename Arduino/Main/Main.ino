@@ -1,3 +1,4 @@
+#include <IR_Sensor.h>
 #include <SonarSensor.h>
 #include <Robot.h>
 
@@ -11,6 +12,10 @@ long distance = 0;
 
 Robot robot1(Motor_Left, Motor_Right,3);
 Sonar front(triggerPin, echoPin, 5, 40);
+IR_Sensor IRLeft(A0);
+IR_Sensor IRMiddle(A1);
+IR_Sensor IRRight(A2);
+
 
 void setup() {
   //front.useBound(true); //enable cliping on sonar distance reading  
@@ -21,6 +26,13 @@ void setup() {
 
 long avg;
 void loop() {
+  Serial.print("Left: ");
+  Serial.print(IRLeft.Read());
+  Serial.print(" Middle: ");
+  Serial.print(IRMiddle.Read());
+  Serial.print(" Right: ");
+  Serial.println(IRRight.Read());
+  
   if (front.getAvgDistance(avg, 5)) // bad read
   {
     if (avg < 13)

@@ -7,39 +7,29 @@ Robot::Robot( int leftMotor[], int rightMotor[], int size )
     {
         return;
     }
+    
+    left_motor = nullptr;
+    left_motor = new Motor(leftMotor, size);
+    if (left_motor == nullptr)
+    {
+        return;
+    }
 
-    for (i = 0; i < 3; i++)
+    right_motor = nullptr;
+    right_motor = new Motor( rightMotor, size );
+    if (right_motor == nullptr)
     {
-        pinMode( leftMotor[i], OUTPUT );
-        left_motor[i] = leftMotor[i];
+        delete left_motor;
+        return;
     }
-    for (i = 0; i < 3; i++)
-    {
-        pinMode( rightMotor[i], OUTPUT );
-        right_motor[i] = rightMotor[i];
-    }
+
 }
-
-
-void Robot::setMotor( int motor[], int newSpeed )
+Robot::~Robot()
 {
-    if (newSpeed < 0)
-    {
-        //back
-        //sets direction
-        digitalWrite( motor[1], HIGH ); //A1 or A3
-        digitalWrite( motor[2], LOW );  //A2 or A4
-
-    }
-    else
-    {
-        //forward
-        //sets direction
-        digitalWrite( motor[1], LOW );
-        digitalWrite( motor[2], HIGH );
-    }
-    analogWrite( motor[0], abs(newSpeed) );
+    delete left_motor;
+    delete right_motor;
 }
+
 
 bool Robot::left( int newSpeed )
 {
@@ -47,8 +37,8 @@ bool Robot::left( int newSpeed )
     {
         return false;
     }
-    setMotor( left_motor, newSpeed );
-    setMotor( right_motor, 0);
+    (*left_motor).setSpeed( newSpeed );
+    (*right_motor).setSpeed( 0 );
 
     return true;
 }
@@ -59,8 +49,8 @@ bool Robot::right( int newSpeed )
     {
         return false;
     }
-    setMotor( right_motor, newSpeed );
-    setMotor( left_motor, 0 );
+    (*left_motor).setSpeed( newSpeed );
+    (*right_motor).setSpeed( 0 );
     return true;
 }
 
@@ -70,13 +60,13 @@ bool Robot::forward( int newSpeed )
     {
         return false;
     }
-    setMotor( left_motor, newSpeed );
-    setMotor( right_motor, newSpeed );
+    (*left_motor).setSpeed( newSpeed );
+    (*right_motor).setSpeed( newSpeed );
     return true;
 }
 
 void Robot::hult()
 {
-    setMotor( left_motor, 0 );
-    setMotor( right_motor, 0 );
+    (*left_motor).setSpeed( 0 );
+    (*right_motor).setSpeed( 0 );
 }

@@ -1,2 +1,3 @@
 IR_Sensor	KEYWORD1
 Read	KEYWORD2
+setThreshold	KEYWORD2

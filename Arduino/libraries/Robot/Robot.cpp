@@ -9,7 +9,7 @@ Robot::Robot( int leftMotor[], int rightMotor[], int size )
     }
     
     left_motor = nullptr;
-    left_motor = new Motor(leftMotor, size);
+    left_motor = new  Motor(leftMotor, size);
     if (left_motor == nullptr)
     {
         return;
@@ -49,8 +49,8 @@ bool Robot::right( int newSpeed )
     {
         return false;
     }
-    (*left_motor).setSpeed( newSpeed );
-    (*right_motor).setSpeed( 0 );
+    (*right_motor).setSpeed( newSpeed );
+    (*left_motor).setSpeed( 0 );
     return true;
 }
 

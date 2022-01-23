@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\VS only">
+      <UniqueIdentifier>{0069a5b1-9ccd-4b2f-a449-f438b0272013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Arduino">
+      <UniqueIdentifier>{57572d5b-b26f-4e78-84a0-190e9bf6d2b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Arduino\Main">
+      <UniqueIdentifier>{681df64e-9d90-4697-aaa5-6750fbe366eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Arduino\kyle_test">
+      <UniqueIdentifier>{bcedd2c7-c9ff-46c5-9eae-4d7fe8a4a300}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Arduino\libraries">
+      <UniqueIdentifier>{a97bb1d0-a203-4651-b2db-c40b876bcfdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Arduino\libraries\IR_Sensor">
+      <UniqueIdentifier>{417df10b-353d-4c62-bf8e-ddc5e7190dd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Arduino\libraries\Motor">
+      <UniqueIdentifier>{2a68c8bd-8f7a-4a86-8553-da1079a10f04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Arduino\libraries\Robot">
+      <UniqueIdentifier>{e47d293c-3808-49bc-82de-eeeda2f385aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Arduino\libraries\SonarSensor">
+      <UniqueIdentifier>{aed88ba0-66a1-4e1a-94ae-51c3a9b16810}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Arduino\Main\Main.ino">
+      <Filter>Source Files\Arduino\Main</Filter>
+    </None>
+    <None Include="..\Arduino\kyle_test\kyle_test.ino">
+      <Filter>Source Files\Arduino\kyle_test</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\VS only</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Arduino\libraries\IR_Sensor\IR_Sensor.cpp">
+      <Filter>Source Files\Arduino\libraries\IR_Sensor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Arduino\libraries\Motor\Motor.cpp">
+      <Filter>Source Files\Arduino\libraries\Motor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Arduino\libraries\Robot\Robot.cpp">
+      <Filter>Source Files\Arduino\libraries\Robot</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Arduino\libraries\SonarSensor\SonarSensor.cpp">
+      <Filter>Source Files\Arduino\libraries\SonarSensor</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="arduino.h">
+      <Filter>Source Files\VS only</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Arduino\libraries\IR_Sensor\IR_Sensor.h">
+      <Filter>Source Files\Arduino\libraries\IR_Sensor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Arduino\libraries\Motor\Motor.h">
+      <Filter>Source Files\Arduino\libraries\Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Arduino\libraries\Robot\Robot.h">
+      <Filter>Source Files\Arduino\libraries\Robot</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Arduino\libraries\SonarSensor\SonarSensor.h">
+      <Filter>Source Files\Arduino\libraries\SonarSensor</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Arduino\libraries\IR_Sensor\keywords.txt">
+      <Filter>Source Files\Arduino\libraries\IR_Sensor</Filter>
+    </Text>
+    <Text Include="..\Arduino\libraries\Motor\keywords.txt">
+      <Filter>Source Files\Arduino\libraries\Motor</Filter>
+    </Text>
+    <Text Include="..\Arduino\libraries\Robot\keywords.txt">
+      <Filter>Source Files\Arduino\libraries\Robot</Filter>
+    </Text>
+    <Text Include="..\Arduino\libraries\SonarSensor\keywords.txt">
+      <Filter>Source Files\Arduino\libraries\SonarSensor</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

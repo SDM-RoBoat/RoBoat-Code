@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\VS only">
-      <UniqueIdentifier>{0069a5b1-9ccd-4b2f-a449-f438b0272013}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Arduino">
       <UniqueIdentifier>{57572d5b-b26f-4e78-84a0-190e9bf6d2b9}</UniqueIdentifier>
     </Filter>
@@ -40,6 +37,9 @@
     <Filter Include="Source Files\Arduino\libraries\SonarSensor">
       <UniqueIdentifier>{aed88ba0-66a1-4e1a-94ae-51c3a9b16810}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\VS_only">
+      <UniqueIdentifier>{0069a5b1-9ccd-4b2f-a449-f438b0272013}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Arduino\Main\Main.ino">
@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files\VS only</Filter>
+      <Filter>Source Files\VS_only</Filter>
     </ClCompile>
     <ClCompile Include="..\Arduino\libraries\IR_Sensor\IR_Sensor.cpp">
       <Filter>Source Files\Arduino\libraries\IR_Sensor</Filter>
@@ -65,11 +65,14 @@
     <ClCompile Include="..\Arduino\libraries\SonarSensor\SonarSensor.cpp">
       <Filter>Source Files\Arduino\libraries\SonarSensor</Filter>
     </ClCompile>
+    <ClCompile Include="arduino.cpp">
+      <Filter>Source Files\VS_only</Filter>
+    </ClCompile>
+    <ClCompile Include="README.TXT">
+      <Filter>Source Files\VS_only</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="arduino.h">
-      <Filter>Source Files\VS only</Filter>
-    </ClInclude>
     <ClInclude Include="..\Arduino\libraries\IR_Sensor\IR_Sensor.h">
       <Filter>Source Files\Arduino\libraries\IR_Sensor</Filter>
     </ClInclude>
@@ -81,6 +84,9 @@
     </ClInclude>
     <ClInclude Include="..\Arduino\libraries\SonarSensor\SonarSensor.h">
       <Filter>Source Files\Arduino\libraries\SonarSensor</Filter>
+    </ClInclude>
+    <ClInclude Include="arduino.h">
+      <Filter>Source Files\VS_only</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

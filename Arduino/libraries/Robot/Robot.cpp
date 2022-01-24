@@ -2,7 +2,6 @@
 
 Robot::Robot( int leftMotor[], int rightMotor[], int size )
 {
-    int i;
     if (size != 3)
     {
         return;

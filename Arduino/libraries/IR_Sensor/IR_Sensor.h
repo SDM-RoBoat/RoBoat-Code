@@ -1,7 +1,7 @@
-#ifndef IR_SENSOR.H
-#define IR_SENSOR.H
+#ifndef IRSENSOR_H
+#define IRSENSOR_H
 
-#include "Arduino.h"
+#include "arduino.h"
 
 class IR_Sensor
 {
@@ -18,4 +18,4 @@ private:
 	int upper_threshold;
 };
 
-#endif // !IR_SENSOR.H
+#endif // IRSENSOR_H

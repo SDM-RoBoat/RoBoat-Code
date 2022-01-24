@@ -30,7 +30,10 @@ bool IR_Sensor::Read(int &value)
 {
     if (!IRPin)
         return false;
-    value = analogRead( IRPin );
+    
+    #ifdef VS
+        value = analogRead( IRPin );
+    #endif  
     if (!enable_Threshold)
     {
         return true;

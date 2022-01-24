@@ -1,7 +1,7 @@
 #ifndef SONAR_SENSOR_H
 #define SONAR_SENSOR_H
 
-#include "Arduino.h"
+#include "arduino.h"
 
 class Sonar
 {

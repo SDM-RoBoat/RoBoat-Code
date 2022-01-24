@@ -1,13 +1,9 @@
 #ifndef ROBOT_H
 #define ROBOT_H
 
-#include "Arduino.h"
-#include "Motor.h"
+#include "arduino.h"
 
-//For VS
-// /*
 #include "..\Motor\Motor.h"
-
 
 // */
 class Robot

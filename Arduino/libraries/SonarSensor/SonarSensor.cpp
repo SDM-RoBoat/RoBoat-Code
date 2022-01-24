@@ -11,6 +11,8 @@ Sonar::Sonar( int triggerPin, int echoPin )
 
 Sonar::Sonar( int triggerPin, int echoPin, int lower_bound, int upper_Bound )
 {
+
+
     pinMode( triggerPin, OUTPUT );
     pinMode( echoPin, INPUT );
 
@@ -18,13 +20,8 @@ Sonar::Sonar( int triggerPin, int echoPin, int lower_bound, int upper_Bound )
     Echo = echoPin;
 
     if (!setBound( lower_bound, upper_Bound ))
-    {
-        Serial.begin( 9600 );
-        Serial.println("Invalid Bounds! ");
-        Serial.print("Trigger: ");
-        Serial.print( triggerPin );
-        Serial.print( "  Echo: " );
-        Serial.println( echoPin );
+    {   
+        
     }
 }
 
@@ -43,7 +40,7 @@ bool Sonar::getDistance( long& distance )
     //read responce
     result = pulseIn( Echo, HIGH );
     //procces result
-    result = result * 0.034 / 2;
+    result = (long)(result * 0.034 / 2.0);
 
     distance = result;
     if (isValid( result ))

@@ -40,6 +40,9 @@
     <Filter Include="Source Files\VS_only">
       <UniqueIdentifier>{0069a5b1-9ccd-4b2f-a449-f438b0272013}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Arduino\libraries\Servo">
+      <UniqueIdentifier>{ff25a4e6-0492-43dd-9101-a4c2da9aa2de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Arduino\Main\Main.ino">
@@ -68,8 +71,8 @@
     <ClCompile Include="arduino.cpp">
       <Filter>Source Files\VS_only</Filter>
     </ClCompile>
-    <ClCompile Include="README.TXT">
-      <Filter>Source Files\VS_only</Filter>
+    <ClCompile Include="..\Arduino\libraries\Servo\Servo.cpp">
+      <Filter>Source Files\Arduino\libraries\Servo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +91,9 @@
     <ClInclude Include="arduino.h">
       <Filter>Source Files\VS_only</Filter>
     </ClInclude>
+    <ClInclude Include="..\Arduino\libraries\Servo\Servo.h">
+      <Filter>Source Files\Arduino\libraries\Servo</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Arduino\libraries\IR_Sensor\keywords.txt">
@@ -101,6 +107,12 @@
     </Text>
     <Text Include="..\Arduino\libraries\SonarSensor\keywords.txt">
       <Filter>Source Files\Arduino\libraries\SonarSensor</Filter>
+    </Text>
+    <Text Include="..\Arduino\libraries\Servo\keywords.txt">
+      <Filter>Source Files\Arduino\libraries\Servo</Filter>
+    </Text>
+    <Text Include="README.txt">
+      <Filter>Source Files\VS_only</Filter>
     </Text>
   </ItemGroup>
 </Project>

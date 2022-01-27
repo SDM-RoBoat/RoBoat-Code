@@ -153,15 +153,16 @@
     <ClCompile Include="..\Arduino\libraries\IR_Sensor\IR_Sensor.cpp" />
     <ClCompile Include="..\Arduino\libraries\Motor\Motor.cpp" />
     <ClCompile Include="..\Arduino\libraries\Robot\Robot.cpp" />
+    <ClCompile Include="..\Arduino\libraries\Servo\Servo.cpp" />
     <ClCompile Include="..\Arduino\libraries\SonarSensor\SonarSensor.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="arduino.cpp" />
-    <ClCompile Include="README.TXT" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Arduino\libraries\IR_Sensor\IR_Sensor.h" />
     <ClInclude Include="..\Arduino\libraries\Motor\Motor.h" />
     <ClInclude Include="..\Arduino\libraries\Robot\Robot.h" />
+    <ClInclude Include="..\Arduino\libraries\Servo\Servo.h" />
     <ClInclude Include="..\Arduino\libraries\SonarSensor\SonarSensor.h" />
     <ClInclude Include="arduino.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -174,7 +175,9 @@
     <Text Include="..\Arduino\libraries\IR_Sensor\keywords.txt" />
     <Text Include="..\Arduino\libraries\Motor\keywords.txt" />
     <Text Include="..\Arduino\libraries\Robot\keywords.txt" />
+    <Text Include="..\Arduino\libraries\Servo\keywords.txt" />
     <Text Include="..\Arduino\libraries\SonarSensor\keywords.txt" />
+    <Text Include="README.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

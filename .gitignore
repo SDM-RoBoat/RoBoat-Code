@@ -7,3 +7,4 @@
 *.suo
 *.db
 *.ipch
+\VS_Coding\Debug\*

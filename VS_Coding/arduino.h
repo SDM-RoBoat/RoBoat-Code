@@ -3,23 +3,24 @@
 
 #define A0 0
 #define A5 5
-
-enum type {LOW, HIGH, INPUT, OUTPUT};
+#define LOW false
+#define HIGH true
+enum type {INPUT, OUTPUT};
 
 int abs( int val );
 
 int analogRead( int pin );
 
-bool analogWrite( int pin, type s );
+bool analogWrite( int pin, bool s );
 
 void delayMicroseconds( int micro );
 
-bool digitalWrite( int pin, type s );
+bool digitalWrite( int pin, bool s );
 
 bool pinMode( int pin, type s );
 
 void analogWrite( int pin, int d );
 
-long pulseIn( int pin, type s );
+long pulseIn( int pin, bool s );
 
 #endif //ARDUINO_H

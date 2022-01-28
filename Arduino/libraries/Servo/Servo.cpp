@@ -47,9 +47,9 @@ void Servo::stepAng(double angle)
     step( convertStep( angle ) );
 }
 
-void Servo::step( double step )
+void Servo::step( double step ) //need to code
 {
-    stepOnce( step );
+    
 }
 
 void Servo::stepOnce()

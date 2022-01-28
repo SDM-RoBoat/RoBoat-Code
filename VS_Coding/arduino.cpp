@@ -10,7 +10,7 @@ int analogRead( int pin )
     return 0;
 }
 
-bool analogWrite( int pin, type s )
+bool analogWrite( int pin, bool s )
 {
     return true;
 }
@@ -20,7 +20,7 @@ void delayMicroseconds( int micro )
 
 }
 
-bool digitalWrite( int pin, type s )
+bool digitalWrite( int pin, bool s )
 {
     return 0;
 }
@@ -35,7 +35,7 @@ void analogWrite( int pin, int d )
 
 }
 
-long pulseIn( int pin, type s )
+long pulseIn( int pin, bool s )
 {
     return 0;
 }

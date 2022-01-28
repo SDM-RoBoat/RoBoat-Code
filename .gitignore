@@ -5,6 +5,9 @@
 *.exe
 *.tlog
 *.suo
-*.db
 *.ipch
-\VS_Coding\x64\*
+*idb
+*.recipe
+*db-shm
+*db-wal
+*opendb

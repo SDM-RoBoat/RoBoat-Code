@@ -7,4 +7,4 @@
 *.suo
 *.db
 *.ipch
-\VS_Coding\Debug\*
+\VS_Coding\x64\*

@@ -1,0 +1,5 @@
+Radio	KEYWORD1
+set		KEYWORD2
+read	KEYWORD2
+printSetup	KEYWORD2
+setScale	KEYWORD2

@@ -2,6 +2,8 @@
 *.log
 *.obj
 *.ilk
-.exe
-.tlog
-
+*.exe
+*.tlog
+*.suo
+*.db
+*.ipch

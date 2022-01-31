@@ -43,6 +43,9 @@
     <Filter Include="Source Files\Arduino\libraries\Servo">
       <UniqueIdentifier>{ff25a4e6-0492-43dd-9101-a4c2da9aa2de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Arduino\libraries\Radio">
+      <UniqueIdentifier>{877c3c05-6a9d-44cb-b1e8-9e2cc5289ad0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Arduino\Main\Main.ino">
@@ -74,6 +77,9 @@
     <ClCompile Include="..\Arduino\libraries\Servo\Servo.cpp">
       <Filter>Source Files\Arduino\libraries\Servo</Filter>
     </ClCompile>
+    <ClCompile Include="..\Arduino\libraries\Radio\Radio.cpp">
+      <Filter>Source Files\Arduino\libraries\Radio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Arduino\libraries\IR_Sensor\IR_Sensor.h">
@@ -94,6 +100,9 @@
     <ClInclude Include="..\Arduino\libraries\Servo\Servo.h">
       <Filter>Source Files\Arduino\libraries\Servo</Filter>
     </ClInclude>
+    <ClInclude Include="..\Arduino\libraries\Radio\Radio.h">
+      <Filter>Source Files\Arduino\libraries\Radio</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Arduino\libraries\IR_Sensor\keywords.txt">
@@ -113,6 +122,9 @@
     </Text>
     <Text Include="README.txt">
       <Filter>Source Files\VS_only</Filter>
+    </Text>
+    <Text Include="..\Arduino\libraries\Radio\keywords.txt">
+      <Filter>Source Files\Arduino\libraries\Radio</Filter>
     </Text>
   </ItemGroup>
 </Project>

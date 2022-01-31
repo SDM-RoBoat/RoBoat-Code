@@ -152,6 +152,7 @@
   <ItemGroup>
     <ClCompile Include="..\Arduino\libraries\IR_Sensor\IR_Sensor.cpp" />
     <ClCompile Include="..\Arduino\libraries\Motor\Motor.cpp" />
+    <ClCompile Include="..\Arduino\libraries\Radio\Radio.cpp" />
     <ClCompile Include="..\Arduino\libraries\Robot\Robot.cpp" />
     <ClCompile Include="..\Arduino\libraries\Servo\Servo.cpp" />
     <ClCompile Include="..\Arduino\libraries\SonarSensor\SonarSensor.cpp" />
@@ -161,6 +162,7 @@
   <ItemGroup>
     <ClInclude Include="..\Arduino\libraries\IR_Sensor\IR_Sensor.h" />
     <ClInclude Include="..\Arduino\libraries\Motor\Motor.h" />
+    <ClInclude Include="..\Arduino\libraries\Radio\Radio.h" />
     <ClInclude Include="..\Arduino\libraries\Robot\Robot.h" />
     <ClInclude Include="..\Arduino\libraries\Servo\Servo.h" />
     <ClInclude Include="..\Arduino\libraries\SonarSensor\SonarSensor.h" />
@@ -174,6 +176,7 @@
   <ItemGroup>
     <Text Include="..\Arduino\libraries\IR_Sensor\keywords.txt" />
     <Text Include="..\Arduino\libraries\Motor\keywords.txt" />
+    <Text Include="..\Arduino\libraries\Radio\keywords.txt" />
     <Text Include="..\Arduino\libraries\Robot\keywords.txt" />
     <Text Include="..\Arduino\libraries\Servo\keywords.txt" />
     <Text Include="..\Arduino\libraries\SonarSensor\keywords.txt" />

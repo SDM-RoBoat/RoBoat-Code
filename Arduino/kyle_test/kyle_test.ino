@@ -7,23 +7,24 @@
  * manually reset. 
  * 
  * Note: This is NOT the Soft-Stop!
+ * This will require a full reboot of the boat
+ */
 
 
 #include <Radio.h>
-channel Hard_Stop = AUX1;
+#define Hard_Stop Radio::AUX1
 
+Radio rad;
 
 int StopPin = 1;
- * This will require a full reboot of the boat
- */
 int relay = 2;
 
-Radio radio();
+
 
 void setup() {
   pinMode(relay, OUTPUT); //enables relay
   
-  if ( radio.set(Hard_Stop, StopPin)==0) 
+  if ( rad.set(Hard_Stop, StopPin)==0) 
   { //If radio pin is valid
     //Gives power to the main relay
     digitalWrite(relay,HIGH); 
@@ -37,7 +38,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  if (!radio.read(Hard_Stop)||radio.read(Hard_Stop)==-256) // true or pressed .read return 0 on high 
+  if (!rad.read(Hard_Stop)||rad.read(Hard_Stop)==-256) // true or pressed .read return 0 on high 
   {
     digitalWrite(relay, LOW);    
   }

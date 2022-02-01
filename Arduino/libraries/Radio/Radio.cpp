@@ -43,12 +43,12 @@ Radio::Radio(int setup[][2], int size)
     for (int i = 0; i < size; i++)
     {
         int pin = setup[i][1];
-        int channel = setup[i][0];
+        int Channel = setup[i][0];
         //error checking
         if (pin > -1 && pin < 14)
         {
             //assignment
-            input_setup[channel] = pin;
+            input_setup[Channel] = pin;
             pinMode(pin, INPUT);
         }
     }
@@ -68,12 +68,12 @@ Radio::Radio(int setup[][2], int size)
  * @returns -2 - invalid channel
  *
  *****************************************************************************/
-int Radio::set(channel channel, int pin)
+int Radio::set(channel Channel, int pin)
 {
     //error checking
     if (pin < -1 || pin > 13)
         return -1;
-    if (channel < 0 || channel > 5)
+    if (Channel < 0 || Channel > 5)
         return - 2;
 
     //setup pin
@@ -81,7 +81,7 @@ int Radio::set(channel channel, int pin)
         pinMode(pin, INPUT);
 
     //asign in setup
-    input_setup[channel] = pin;
+    input_setup[Channel] = pin;
 
     return 0;
 }
@@ -100,19 +100,19 @@ int Radio::set(channel channel, int pin)
  * @returns -100001 - channel values dosn't exist
  *
  *****************************************************************************/
-int Radio::read(channel channel)
+int Radio::read(channel Channel)
 {
-    int pin = input_setup[channel];
+    int pin = input_setup[Channel];
 
     if (pin == -1)
         return -100000;
 
     //determine channel type & read in data
-    if (channel == Throttle)
+    if (Channel == Throttle)
         return (readThrottle(pin));
-    else if (channel < Gear)
+    else if (Channel < Gear)
         return readJoystick(pin);
-    else if (channel < 6) //switches
+    else if (Channel < 6) //switches
         return readSwitch(pin);
     else
         return -100001;

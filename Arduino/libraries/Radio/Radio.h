@@ -11,7 +11,7 @@
 #include "Arduino.h"
 #include <math.h>
 
-enum channel { Throttle, Aileron, Elevator, Rudder, Gear, AUX1}; //corralates to the channel on the reciver
+
 
 /** ***************************************************************************
  * @brief   A set of functions to read in data from a Spektrum AR610 6CH 
@@ -23,11 +23,14 @@ enum channel { Throttle, Aileron, Elevator, Rudder, Gear, AUX1}; //corralates to
 class Radio
 {
 public:
+
+    enum channel { Throttle, Aileron, Elevator, Rudder, Gear, AUX1 }; //corralates to the channel on the reciver
+
     Radio();
     Radio(int setup[][2], int size);
 
-    int set(channel channel, int pin);
-    int read(channel channel);
+    int set(channel Channel, int pin);
+    int read(channel Channel);
     void setScale(int new_scale);
 
 private:

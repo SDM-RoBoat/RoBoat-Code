@@ -1,9 +1,10 @@
 #include "arduino.h"
-
+/*
 int abs( int val )
 {
     return 0;
 }
+*/
 
 int analogRead( int pin )
 {
@@ -36,6 +37,11 @@ void analogWrite( int pin, int d )
 }
 
 long pulseIn( int pin, bool s )
+{
+    return 0;
+}
+
+int map( int a, int b, int c, int d, int e )
 {
     return 0;
 }

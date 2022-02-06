@@ -150,6 +150,9 @@
     <None Include="..\Arduino\Main\Main.ino" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Arduino\libraries\BoatSonar\boatSonar.cpp" />
+    <ClCompile Include="..\Arduino\libraries\BoatSonar\interupts.cpp" />
+    <ClCompile Include="..\Arduino\libraries\BoatSonar\zone.cpp" />
     <ClCompile Include="..\Arduino\libraries\IR_Sensor\IR_Sensor.cpp" />
     <ClCompile Include="..\Arduino\libraries\Motor\Motor.cpp" />
     <ClCompile Include="..\Arduino\libraries\Radio\Radio.cpp" />
@@ -160,6 +163,9 @@
     <ClCompile Include="arduino.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Arduino\libraries\BoatSonar\boatSonar.h" />
+    <ClInclude Include="..\Arduino\libraries\BoatSonar\interupts.h" />
+    <ClInclude Include="..\Arduino\libraries\BoatSonar\zone.h" />
     <ClInclude Include="..\Arduino\libraries\IR_Sensor\IR_Sensor.h" />
     <ClInclude Include="..\Arduino\libraries\Motor\Motor.h" />
     <ClInclude Include="..\Arduino\libraries\Radio\Radio.h" />

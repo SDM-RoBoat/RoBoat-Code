@@ -26,7 +26,7 @@ bool digitalWrite( int pin, bool s )
     return 0;
 }
 
-bool pinMode( int pin, type s )
+void pinMode( int pin, type s )
 {
     return 0;
 }
@@ -42,6 +42,26 @@ long pulseIn( int pin, bool s )
 }
 
 int map( int a, int b, int c, int d, int e )
+{
+    return 0;
+}
+
+bool attachInterrupt( int pin, bool f, interuptTypes type )
+{
+    return false;
+}
+
+int digitalPinToInterrupt( int pin )
+{
+    return 0;
+}
+
+bool detachInterrupt( int pin )
+{
+    return false;
+}
+
+long millis()
 {
     return 0;
 }

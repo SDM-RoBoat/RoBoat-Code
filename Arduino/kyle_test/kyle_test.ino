@@ -16,14 +16,15 @@
 
 Radio rad;
 
-int StopPin = 1;
-int relay = 2;
-
+int StopPin = 7;
+int relay = 6;
+int input = 0;
 
 
 void setup() {
-  pinMode(relay, OUTPUT); //enables relay
-  
+pinMode(relay, OUTPUT); //enables relay
+
+  Serial.begin(9600);
   if ( rad.set(Hard_Stop, StopPin)==0) 
   { //If radio pin is valid
     //Gives power to the main relay
@@ -38,7 +39,14 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  if (!rad.read(Hard_Stop)||rad.read(Hard_Stop)==-256) // true or pressed .read return 0 on high 
+  //Serial.println(rad.read(Hard_Stop));
+  input = rad.read(Hard_Stop);
+  Serial.println(input);
+
+  //Note: if radio gets disconneted the code does not do anything
+  //TODO: need to be fixed!
+  
+  if (input!=0 && input!=-256) // true or pressed .read return 0 on high 
   {
     digitalWrite(relay, LOW);    
   }

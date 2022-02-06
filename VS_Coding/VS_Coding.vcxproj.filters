@@ -46,6 +46,9 @@
     <Filter Include="Source Files\Arduino\libraries\Radio">
       <UniqueIdentifier>{877c3c05-6a9d-44cb-b1e8-9e2cc5289ad0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Arduino\libraries\BoatSonar">
+      <UniqueIdentifier>{bd61d8ed-384b-4c53-b480-a12b1de851c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Arduino\Main\Main.ino">
@@ -80,6 +83,15 @@
     <ClCompile Include="..\Arduino\libraries\Radio\Radio.cpp">
       <Filter>Source Files\Arduino\libraries\Radio</Filter>
     </ClCompile>
+    <ClCompile Include="..\Arduino\libraries\BoatSonar\boatSonar.cpp">
+      <Filter>Source Files\Arduino\libraries\BoatSonar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Arduino\libraries\BoatSonar\zone.cpp">
+      <Filter>Source Files\Arduino\libraries\BoatSonar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Arduino\libraries\BoatSonar\interupts.cpp">
+      <Filter>Source Files\Arduino\libraries\BoatSonar</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Arduino\libraries\IR_Sensor\IR_Sensor.h">
@@ -102,6 +114,15 @@
     </ClInclude>
     <ClInclude Include="..\Arduino\libraries\Radio\Radio.h">
       <Filter>Source Files\Arduino\libraries\Radio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Arduino\libraries\BoatSonar\boatSonar.h">
+      <Filter>Source Files\Arduino\libraries\BoatSonar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Arduino\libraries\BoatSonar\interupts.h">
+      <Filter>Source Files\Arduino\libraries\BoatSonar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Arduino\libraries\BoatSonar\zone.h">
+      <Filter>Source Files\Arduino\libraries\BoatSonar</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

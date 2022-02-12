@@ -9,4 +9,3 @@ useBound    KEYWORD2
 updateBoatSonar KEYWORD2
 getDistance KEYWORD2
 initZone    KEYWORD2
-SONAR_LIMIT LITERIAL1

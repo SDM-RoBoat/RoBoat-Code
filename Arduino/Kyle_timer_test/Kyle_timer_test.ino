@@ -1,25 +1,26 @@
 #include "boatSonar.h"
 
 //Note: Do not use pins 19, 18, 5 ,4 for triggers
-int triggersZone0[3] = {22,23,24};
-int triggersZone1[3] = {25,26,27};
-int triggersZone2[3] = {28,29,30};
-int triggersZone3[3] = {31,32,33};
-zone zone0(0, triggersZone0, 3);
-zone zone1(1, triggersZone1, 3);
-zone zone2(2, triggersZone2, 3);
-zone zone3(3, triggersZone3, 3);
+
+BoatSonar myBoat();
+
+int MIDtriggers[3] = {6,7,8};
+int BACKtriggers[2] = {40,41);
+
+long dataMID[3] = {0};
+long dataBACK[2] = {0};
 
 void setup() {
-  setInterupts();  
+  myBoat.initZone(BoatSonar::MID, MIDtriggers, 3);
+  myBoat.initZone(BoatSonar::BACK, BACKtriggers, 2);
+  
 }
 
 void loop() {
-  zone0.updatezone();
-  zone1.updatezone();
-  zone2.updatezone();
-  zone3.updatezone();
+  myBoat.updateBoatSonar();
 
-  
-  
+  //I2c
+
+  myBoat.getDistance(dataMID, 3, BoatSonar::MID);
+  myBoat.getDistance(dataBACK, 3, BoatSonar::BACK);
 }

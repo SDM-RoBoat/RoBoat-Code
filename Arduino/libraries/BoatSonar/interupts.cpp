@@ -1,19 +1,39 @@
+/** ***************************************************************************
+ * @file
+ *
+ * @brief   deffinitions for pin interupts
+ *****************************************************************************/
 #include "interupts.h"
 
+//temp data for zone 3
 volatile long zone3Start = 0;
 volatile long zone3End = 0;
 volatile bool mode3 = 0;
+
+//temp data for zone 2
 volatile long zone2Start = 0;
 volatile long zone2End = 0;
 volatile bool mode2 = 0;
+
+//temp data for zone 1
 volatile long zone1Start = 0;
 volatile long zone1End = 0;
 volatile bool mode1 = 0;
+
+//temp data for zone 0
 volatile long zone0Start = 0;
 volatile long zone0End = 0;
 volatile bool mode0 = 0;
 
-//this fuction fully handles setting up the intrupt pins
+
+
+/** ***************************************************************************
+ * @author Kyle Houchin
+ *
+ * @par Description:
+ * This fuction fully handles setting up the intrupt pins
+ *
+ *****************************************************************************/
 void setInterupts()
 {
     //dissable intrupts tempurarly
@@ -29,8 +49,16 @@ void setInterupts()
     sei();
 }
 
-//zone 3
 
+
+//zone 3
+/** ***************************************************************************
+ * @author Kyle Houchin
+ *
+ * @par Description:
+ * This fuction sets up the intrupts on pin 19 for zone 3
+ *
+ *****************************************************************************/
 void zone3Setup() //pin 19
 {
     //equivlent to doing pinMode(pin, INPUT);
@@ -45,21 +73,29 @@ void zone3Setup() //pin 19
     EIMSK |= (1 << INT2); //sets the inable for INT2
 }
 
+/** ***************************************************************************
+ * @author Kyle Houchin
+ *
+ * @par Description:
+ * This fuction is the interupt function that is called when the pin changes
+ * state for zone 3.
+ *
+ *****************************************************************************/
 ISR( INT2_vect ) //interuput call function
 { //called when ever pin 19 changes
-    if (!mode3)
-    {
-        zone3Start = micros();
-    }
-    else
-    {
-        zone3End = micros();
-    }
-    mode3 = !mode3;
+    !mode3 ? zone3Start = micros() : zone3End = micros();
 }
 
-//zone 2
 
+
+//zone 2
+/** ***************************************************************************
+ * @author Kyle Houchin
+ *
+ * @par Description:
+ * This fuction sets up the intrupts on pin 18 for zone 2
+ *
+ *****************************************************************************/
 void zone2Setup() //pin 18
 {
     //equivlent to doing pinMode(pin);
@@ -76,21 +112,29 @@ void zone2Setup() //pin 18
     EIMSK |= (1 << INT3); //sets the inable for INT3
 }
 
+/** ***************************************************************************
+ * @author Kyle Houchin
+ *
+ * @par Description:
+ * This fuction is the interupt function that is called when the pin changes
+ * state for zone 2.
+ *
+ *****************************************************************************/
 ISR( INT3_vect ) //interuput call function
 { //called when ever pin 18 changes
-    if (!mode2)
-    {
-        zone2Start = micros();
-    }
-    else
-    {
-        zone2End = micros();
-    }
-    mode2 = !mode2;
+    !mode2 ? zone2Start = micros() : zone2End = micros();
 }
 
-//zone 1
 
+
+//zone 1
+/** ***************************************************************************
+ * @author Kyle Houchin
+ *
+ * @par Description:
+ * This fuction sets up the intrupts on pin 3 for zone 1
+ *
+ *****************************************************************************/
 void zone1Setup() //pin 3
 {
     //equivlent to doing pinMode(pin, INPUT);
@@ -106,20 +150,29 @@ void zone1Setup() //pin 3
     EIMSK |= (1 << INT5); //sets the inable for INT5
 }
 
+/** ***************************************************************************
+ * @author Kyle Houchin
+ *
+ * @par Description:
+ * This fuction is the interupt function that is called when the pin changes
+ * state for zone 1.
+ *
+ *****************************************************************************/
 ISR( INT5_vect ) //interuput call function
 { //called when ever pin 3 changes
-    if (!mode1)
-    {
-        zone1Start = micros();
-    }
-    else
-    {
-        zone1End = micros();
-    }
-    mode1 = !mode1;
+    !mode1 ? zone1Start = micros() : zone1End = micros();
 }
-//zone 0
 
+
+
+//zone 0
+/** ***************************************************************************
+ * @author Kyle Houchin
+ *
+ * @par Description:
+ * This fuction sets up the intrupts on pin 2 for zone 0
+ *
+ *****************************************************************************/
 void zone0Setup() //pin 2
 {
     //equivlent to doing pinMode(pin);
@@ -136,19 +189,32 @@ void zone0Setup() //pin 2
     EIMSK |= (1 << INT4); //sets the inable for INT4
 }
 
+/** ***************************************************************************
+ * @author Kyle Houchin
+ *
+ * @par Description:
+ * This fuction is the interupt function that is called when the pin changes
+ * state for zone 0.
+ *
+ *****************************************************************************/
 ISR( INT4_vect ) //interuput call function
 { //called when ever pin 2 changes
-    if (!mode0)
-    {
-        zone0Start = micros();
-    }
-    else
-    {
-        zone0End = micros();
-    }
-    mode0 = !mode0;
+    !mode0 ? zone0Start = micros() : zone0End = micros();
 }
 
+
+
+/** ***************************************************************************
+ * @author Kyle Houchin
+ *
+ * @par Description:
+ * this funtion returns the data from the interupt collections on the echo pins
+ * equivenlt of running a pulseIn(echoPin). However this allows for a faster
+ * collection time for lots of sonars
+ * 
+ * @returns The temp data for the zone. In a long
+ *
+ *****************************************************************************/
 long getZone( int zone)
 {
     switch (zone)

@@ -1,8 +1,22 @@
+/** ***************************************************************************
+ * @file
+ *
+ * @brief   Setup for the IR_Sensor class
+ *****************************************************************************/
 #ifndef IRSENSOR_H
 #define IRSENSOR_H
 
 #include "arduino.h"
 
+
+
+ /** ***************************************************************************
+  * @brief
+  * This IR_Sensor class takes one IR_sensor and makes it easy to use.
+  *
+  * @author  Kyle Houchin
+  * @date    2/12/2022
+  *****************************************************************************/
 class IR_Sensor
 {
 public:
@@ -12,10 +26,10 @@ public:
 	bool setThreshold( int lower, int higher );
 
 private:
-	int IRPin;
-	bool enable_Threshold;
-	int lower_threshold;
-	int upper_threshold;
+	int IRPin; //arduino pin
+	bool enable_Threshold; //read() uses this
+	int lower_threshold; //lower cutoff value in cm
+	int upper_threshold; //upper cutoff value in cm
 };
 
 #endif // IRSENSOR_H

@@ -11,3 +11,10 @@
 *db-shm
 *db-wal
 *opendb
+gazebo_world_creator/.idea/gazebo_world_creator.iml
+gazebo_world_creator/.idea/inspectionProfiles/profiles_settings.xml
+gazebo_world_creator/.idea/modules.xml
+gazebo_world_creator/.idea/workspace.xml
+gazebo_world_creator/main.py
+gazebo_world_creator/.idea/vcs.xml
+gazebo_world_creator/.idea/misc.xml

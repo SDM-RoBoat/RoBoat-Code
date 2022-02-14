@@ -1,3 +1,8 @@
+/** ***************************************************************************
+ * @file
+ *
+ * @brief   Setup for the Motor class
+ *****************************************************************************/
 #ifndef Motor_H
 #define Motor_H
 
@@ -11,7 +16,7 @@ class Motor
         void hult();
     
     private:
-        int motor[3];
+        int motor[3]; //holds the pins for the motor
         
 };
 

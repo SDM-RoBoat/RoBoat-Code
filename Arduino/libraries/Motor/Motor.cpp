@@ -1,5 +1,21 @@
+/** ***************************************************************************
+ * @file
+ *
+ * @brief   Motor class function definitions
+ *****************************************************************************/
 #include "Motor.h"
 
+/** ***************************************************************************
+* @author Kyle Houchin
+*
+* @par Description:
+* This function will check to make sure that 3 pins are given and will then
+* save then into the class and set there pinmode
+*
+* @param[in] newMotor - [PWM pin, A1, A2]
+* @param[in] size - newMotor size
+*
+*****************************************************************************/
 Motor::Motor( int newMotor[], int size )
 {
     int i;
@@ -14,6 +30,23 @@ Motor::Motor( int newMotor[], int size )
     }
 }
 
+
+
+/** ***************************************************************************
+ * @author Kyle Houchin
+ *
+ * @par Description:
+ * This
+ *
+ *
+ * @todo need to implement into data retrun
+ *
+ * @param[in] newSpeed - lower cutoff value in cm for sonar
+ *
+ * @returns true succesfull
+ * @returns false invalid speed was given
+ *
+ *****************************************************************************/
 bool Motor::setSpeed( int newSpeed )
 {
     if (newSpeed < -255 || newSpeed > 255)
@@ -40,6 +73,26 @@ bool Motor::setSpeed( int newSpeed )
     return true;
 }
 
+
+
+/** ***************************************************************************
+ * @author Kyle Houchin
+ *
+ * @par Description:
+ * This function will take two bounds and save then to the class
+ * it will then enable bound checking. will retrun -1 for invlaid disstances
+ * in the getDistance( long distance[], int size, boatZone bz ), disstance
+ * array. At the location of the sonar that had an invalid reading
+ *
+ * @todo need to implement into data retrun
+ *
+ * @param[in] lower_bound - lower cutoff value in cm for sonar
+ * @param[in] upper_bound - cutoff value in cm for sonar
+ *
+ * @returns true succesfull
+ * @returns false if bounds are invalid
+ *
+ *****************************************************************************/
 void Motor::hult() 
 {
     setSpeed( 0 );

@@ -19,9 +19,6 @@
     <Filter Include="Source Files\Arduino\Main">
       <UniqueIdentifier>{681df64e-9d90-4697-aaa5-6750fbe366eb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Arduino\kyle_test">
-      <UniqueIdentifier>{bcedd2c7-c9ff-46c5-9eae-4d7fe8a4a300}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Arduino\libraries">
       <UniqueIdentifier>{a97bb1d0-a203-4651-b2db-c40b876bcfdb}</UniqueIdentifier>
     </Filter>
@@ -49,13 +46,28 @@
     <Filter Include="Source Files\Arduino\libraries\BoatSonar">
       <UniqueIdentifier>{bd61d8ed-384b-4c53-b480-a12b1de851c4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Arduino\E-Stop">
+      <UniqueIdentifier>{a18ad5e1-9119-475a-a264-a0e93b44da9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Arduino\Kyle_timer_test">
+      <UniqueIdentifier>{c80f0312-1cf9-42e5-9ac4-62c7be954c05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Arduino\micah_test_radio">
+      <UniqueIdentifier>{26034593-2257-47f9-8162-434f97fdfdf2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Arduino\Main\Main.ino">
       <Filter>Source Files\Arduino\Main</Filter>
     </None>
-    <None Include="..\Arduino\kyle_test\kyle_test.ino">
-      <Filter>Source Files\Arduino\kyle_test</Filter>
+    <None Include="..\Arduino\E-Stop\E-Stop.ino">
+      <Filter>Source Files\Arduino\E-Stop</Filter>
+    </None>
+    <None Include="..\Arduino\Kyle_timer_test\Kyle_timer_test.ino">
+      <Filter>Source Files\Arduino\Kyle_timer_test</Filter>
+    </None>
+    <None Include="..\Arduino\micah_test_radio\radio_test.ino">
+      <Filter>Source Files\Arduino\micah_test_radio</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +134,9 @@
       <Filter>Source Files\Arduino\libraries\BoatSonar</Filter>
     </ClInclude>
     <ClInclude Include="..\Arduino\libraries\BoatSonar\zone.h">
+      <Filter>Source Files\Arduino\libraries\BoatSonar</Filter>
+    </ClInclude>
+    <ClInclude Include="keywords.txt">
       <Filter>Source Files\Arduino\libraries\BoatSonar</Filter>
     </ClInclude>
   </ItemGroup>

@@ -146,8 +146,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="..\Arduino\kyle_test\kyle_test.ino" />
+    <None Include="..\Arduino\E-Stop\E-Stop.ino" />
+    <None Include="..\Arduino\Kyle_timer_test\Kyle_timer_test.ino" />
     <None Include="..\Arduino\Main\Main.ino" />
+    <None Include="..\Arduino\micah_test_radio\radio_test.ino" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Arduino\libraries\BoatSonar\boatSonar.cpp" />
@@ -178,6 +180,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="keywords.txt" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Arduino\libraries\IR_Sensor\keywords.txt" />

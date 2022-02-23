@@ -32,7 +32,7 @@ zone::zone( int zoneselect, int triggers[], int triggersSize )
     {
         triggerPins[i] = triggers[i];
         pinMode( triggerPins[i], OUTPUT );
-        digitalWrite( triggerPins[i], LOW );
+        digitalWrite( triggerPins[i], HIGH );
     }
     numTriggers = triggersSize;
     lastUpdate = millis();
@@ -120,9 +120,12 @@ bool zone::updatezone() //only collects the next triggers data
 {
     if (!enabled)
         return false;
+    
     long currentUpdate = millis();
+
     if ((currentUpdate - lastUpdate < SONAR_SAMPLE_RATE)) //not enought time to resample
         return false;
+
     lastUpdate = currentUpdate; //reset soft clock
 
     //log last round of data
@@ -130,14 +133,15 @@ bool zone::updatezone() //only collects the next triggers data
 
     //setup next round of data
     lastTrigger++;
-    if (lastTrigger > numTriggers)
+    if (lastTrigger >= numTriggers)
         lastTrigger = 0;
     
-    noInterrupts();
+    //noInterrupts();
     digitalWrite( triggerPins[lastTrigger], HIGH );
-    delayMicroseconds( 10 );
+    delayMicroseconds(10);
     digitalWrite( triggerPins[lastTrigger], LOW );
-    interrupts();
+    //interrupts();
+    return true;
 
 }
 //end of zone class

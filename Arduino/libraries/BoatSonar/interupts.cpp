@@ -6,23 +6,23 @@
 #include "interupts.h"
 
 //temp data for zone 3
-volatile long zone3Start = 0;
-volatile long zone3End = 0;
+volatile unsigned long zone3Start = 0;
+volatile unsigned long zone3End = 0;
 volatile bool mode3 = 0;
 
 //temp data for zone 2
-volatile long zone2Start = 0;
-volatile long zone2End = 0;
+volatile unsigned long zone2Start = 0;
+volatile unsigned long zone2End = 0;
 volatile bool mode2 = 0;
 
 //temp data for zone 1
-volatile long zone1Start = 0;
-volatile long zone1End = 0;
+volatile unsigned long zone1Start = 0;
+volatile unsigned long zone1End = 0;
 volatile bool mode1 = 0;
 
 //temp data for zone 0
-volatile long zone0Start = 0;
-volatile long zone0End = 0;
+volatile unsigned long zone0Start = 0;
+volatile unsigned long zone0End = 0;
 volatile bool mode0 = 0;
 
 
@@ -83,7 +83,14 @@ void zone3Setup() //pin 19
  *****************************************************************************/
 ISR( INT2_vect ) //interuput call function
 { //called when ever pin 19 changes
-    !mode3 ? zone3Start = micros() : zone3End = micros();
+    if (!mode3)
+    {
+        zone3Start = micros();
+        mode3 = !mode3;
+        return;
+    }
+    zone3End = micros();
+    mode3 = !mode3;
 }
 
 
@@ -122,7 +129,14 @@ void zone2Setup() //pin 18
  *****************************************************************************/
 ISR( INT3_vect ) //interuput call function
 { //called when ever pin 18 changes
-    !mode2 ? zone2Start = micros() : zone2End = micros();
+    if (!mode2)
+    {
+        zone2Start = micros();
+        mode2 = !mode2;
+        return;
+    }
+    zone2End = micros();
+    mode2 = !mode2;
 }
 
 
@@ -160,7 +174,14 @@ void zone1Setup() //pin 3
  *****************************************************************************/
 ISR( INT5_vect ) //interuput call function
 { //called when ever pin 3 changes
-    !mode1 ? zone1Start = micros() : zone1End = micros();
+    if (!mode1)
+    {
+        zone1Start = micros();
+        mode1 = !mode1;
+        return;
+    }
+    zone1End = micros();
+    mode1 = !mode1;
 }
 
 
@@ -199,7 +220,14 @@ void zone0Setup() //pin 2
  *****************************************************************************/
 ISR( INT4_vect ) //interuput call function
 { //called when ever pin 2 changes
-    !mode0 ? zone0Start = micros() : zone0End = micros();
+    if (!mode0)
+    {
+        zone0Start = micros();
+        mode0 = !mode0;
+        return;
+    }
+    zone0End = micros();
+    mode0 = !mode0;
 }
 
 
@@ -220,16 +248,16 @@ long getZone( int zone)
     switch (zone)
     {
     case 0:
-        return (long)(zone0Start - zone0End);
+        return (long)(zone0End - zone0Start);
         break;
     case 1:
-        return (long)(zone1Start - zone1End);
+        return (long)(zone1End - zone1Start);
         break;
     case 2:
-        return (long)(zone2Start - zone2End);
+        return (long)(zone2End - zone2Start);
         break;
     case 3:
-        return (long)(zone3Start - zone3End);
+        return (long)(zone3End - zone3Start);
         break;
     default:
         break;

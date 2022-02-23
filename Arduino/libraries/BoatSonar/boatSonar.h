@@ -34,7 +34,7 @@ default size of the sonars in each zone. Defualt is 5 Sonar Sensors in a zone.
 //(Required)
 #include "boatSonar.h"
 
-//Note: Do not use pins 19, 18, 5 ,4 for triggers
+//Note: Do not use pins 19, 18, 3 ,2 for triggers
 
 BoatSonar myBoat();
 

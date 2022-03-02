@@ -24,7 +24,7 @@
 *****************************************************************************/
 //zone class
 #ifndef SONAR_SAMPLE_RATE
-#define SONAR_SAMPLE_RATE 75 //milliseconds
+#define SONAR_SAMPLE_RATE 100 //milliseconds
 #endif // !SONAR_SAMPLE_RATE
 
 

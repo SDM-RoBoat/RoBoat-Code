@@ -25,7 +25,22 @@ volatile unsigned long zone0Start = 0;
 volatile unsigned long zone0End = 0;
 volatile bool mode0 = 0;
 
-
+bool getMode(int zone_num)
+{
+    switch (zone_num)
+    {
+    case 0:
+        return mode0;
+    case 1:
+        return mode1;
+    case 2:
+        return mode2;
+    case 3: 
+        return mode3;
+    default:
+        return true;
+    }
+}
 
 /** ***************************************************************************
  * @author Kyle Houchin
@@ -91,6 +106,7 @@ ISR( INT2_vect ) //interuput call function
     }
     zone3End = micros();
     mode3 = !mode3;
+
 }
 
 
@@ -224,6 +240,7 @@ ISR( INT4_vect ) //interuput call function
     {
         zone0Start = micros();
         mode0 = !mode0;
+
         return;
     }
     zone0End = micros();
@@ -248,6 +265,10 @@ long getZone( int zone)
     switch (zone)
     {
     case 0:
+        /*Serial.print("Zone0Start: ");
+        Serial.println(zone0Start);
+        Serial.print("Zone0End: ");
+        Serial.println(zone0End);*/
         return (long)(zone0End - zone0Start);
         break;
     case 1:

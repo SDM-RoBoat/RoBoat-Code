@@ -126,21 +126,34 @@ bool zone::updatezone() //only collects the next triggers data
     if ((currentUpdate - lastUpdate < SONAR_SAMPLE_RATE)) //not enought time to resample
         return false;
 
-    lastUpdate = currentUpdate; //reset soft clock
-
-    //log last round of data
-    datazone[lastTrigger] = (long)((getZone( currentzone )) * 0.034 / 2.0);
-
+    lastUpdate = currentUpdate; //reset soft clock    if (getMode(currentzone))
+    
     //setup next round of data
     lastTrigger++;
     if (lastTrigger >= numTriggers)
         lastTrigger = 0;
-    
+
     //noInterrupts();
-    digitalWrite( triggerPins[lastTrigger], HIGH );
+    digitalWrite(triggerPins[lastTrigger], HIGH);
     delayMicroseconds(10);
-    digitalWrite( triggerPins[lastTrigger], LOW );
+    digitalWrite(triggerPins[lastTrigger], LOW);
     //interrupts();
+
+
+    if(!getMode(currentzone))
+    {
+        //Serial.println("FALSE!!");
+        datazone[lastTrigger] = (long)((getZone(currentzone)) * 0.034 / 2.0);
+        //return false;
+    }
+    else
+    {
+        delay(20);
+    }
+
+    //log last round of data
+    
+
     return true;
 
 }

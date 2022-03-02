@@ -15,6 +15,8 @@ void zone2Setup();
 void zone1Setup();
 void zone0Setup();
 
+
+bool getMode(int zone_num);
 long getZone( int zone );
 
 #endif // !INTERUPTS_H

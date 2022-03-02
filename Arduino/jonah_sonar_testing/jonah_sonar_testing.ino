@@ -46,7 +46,7 @@ void loop() {
 //  myBoat->getDistance(dataBACK, 3, BoatSonar::BACK);
 //  myBoat->getDistance(dataSTAR, 2, BoatSonar::STAR);
 //  myBoat->getDistance(dataPORT, 2, BoatSonar::PORT);
-
+  Serial.print("Distance: ");
   Serial.println(dataMID[0]);
   //delay(10);
 }

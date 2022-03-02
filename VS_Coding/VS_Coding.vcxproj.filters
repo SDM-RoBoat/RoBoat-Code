@@ -55,6 +55,21 @@
     <Filter Include="Source Files\Arduino\micah_test_radio">
       <UniqueIdentifier>{26034593-2257-47f9-8162-434f97fdfdf2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Arduino\libraries\RPLidar">
+      <UniqueIdentifier>{e8d3a8a3-29f3-40e0-95b4-80f2ca79a9b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Arduino\libraries\RPLidar\inc">
+      <UniqueIdentifier>{3f459b7e-2874-4853-9336-e72bcc17e434}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Arduino\libraries\RPLidar\examples">
+      <UniqueIdentifier>{702c0cc0-61f3-4232-8d04-11f1eacbd4eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Arduino\libraries\RPLidar\examples\simple_connect">
+      <UniqueIdentifier>{10b16e02-5df0-4ec2-aa94-f81d26310f5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Arduino\libraries\RPLidar\examples\distance_to_color">
+      <UniqueIdentifier>{349bae81-e60d-447e-9ed7-d9f61932efeb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Arduino\Main\Main.ino">
@@ -68,6 +83,12 @@
     </None>
     <None Include="..\Arduino\micah_test_radio\radio_test.ino">
       <Filter>Source Files\Arduino\micah_test_radio</Filter>
+    </None>
+    <None Include="..\Arduino\libraries\RPLidar\examples\distance_to_color\distance_to_color.ino">
+      <Filter>Source Files\Arduino\libraries\RPLidar\examples\distance_to_color</Filter>
+    </None>
+    <None Include="..\Arduino\libraries\RPLidar\examples\simple_connect\simple_connect.ino">
+      <Filter>Source Files\Arduino\libraries\RPLidar\examples\simple_connect</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +125,9 @@
     <ClCompile Include="..\Arduino\libraries\BoatSonar\interupts.cpp">
       <Filter>Source Files\Arduino\libraries\BoatSonar</Filter>
     </ClCompile>
+    <ClCompile Include="..\Arduino\libraries\RPLidar\RPLidar.cpp">
+      <Filter>Source Files\Arduino\libraries\RPLidar</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Arduino\libraries\IR_Sensor\IR_Sensor.h">
@@ -139,6 +163,18 @@
     <ClInclude Include="keywords.txt">
       <Filter>Source Files\Arduino\libraries\BoatSonar</Filter>
     </ClInclude>
+    <ClInclude Include="..\Arduino\libraries\RPLidar\RPLidar.h">
+      <Filter>Source Files\Arduino\libraries\RPLidar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Arduino\libraries\RPLidar\inc\rplidar_cmd.h">
+      <Filter>Source Files\Arduino\libraries\RPLidar\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Arduino\libraries\RPLidar\inc\rplidar_protocol.h">
+      <Filter>Source Files\Arduino\libraries\RPLidar\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Arduino\libraries\RPLidar\inc\rptypes.h">
+      <Filter>Source Files\Arduino\libraries\RPLidar\inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Arduino\libraries\IR_Sensor\keywords.txt">
@@ -161,6 +197,9 @@
     </Text>
     <Text Include="..\Arduino\libraries\Radio\keywords.txt">
       <Filter>Source Files\Arduino\libraries\Radio</Filter>
+    </Text>
+    <Text Include="..\Arduino\libraries\RPLidar\keywords.txt">
+      <Filter>Source Files\Arduino\libraries\RPLidar</Filter>
     </Text>
   </ItemGroup>
 </Project>

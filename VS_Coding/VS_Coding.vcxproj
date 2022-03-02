@@ -148,6 +148,8 @@
   <ItemGroup>
     <None Include="..\Arduino\E-Stop\E-Stop.ino" />
     <None Include="..\Arduino\Kyle_timer_test\Kyle_timer_test.ino" />
+    <None Include="..\Arduino\libraries\RPLidar\examples\distance_to_color\distance_to_color.ino" />
+    <None Include="..\Arduino\libraries\RPLidar\examples\simple_connect\simple_connect.ino" />
     <None Include="..\Arduino\Main\Main.ino" />
     <None Include="..\Arduino\micah_test_radio\radio_test.ino" />
   </ItemGroup>
@@ -159,6 +161,7 @@
     <ClCompile Include="..\Arduino\libraries\Motor\Motor.cpp" />
     <ClCompile Include="..\Arduino\libraries\Radio\Radio.cpp" />
     <ClCompile Include="..\Arduino\libraries\Robot\Robot.cpp" />
+    <ClCompile Include="..\Arduino\libraries\RPLidar\RPLidar.cpp" />
     <ClCompile Include="..\Arduino\libraries\Servo\Servo.cpp" />
     <ClCompile Include="..\Arduino\libraries\SonarSensor\SonarSensor.cpp" />
     <ClCompile Include="main.cpp" />
@@ -172,6 +175,10 @@
     <ClInclude Include="..\Arduino\libraries\Motor\Motor.h" />
     <ClInclude Include="..\Arduino\libraries\Radio\Radio.h" />
     <ClInclude Include="..\Arduino\libraries\Robot\Robot.h" />
+    <ClInclude Include="..\Arduino\libraries\RPLidar\inc\rplidar_cmd.h" />
+    <ClInclude Include="..\Arduino\libraries\RPLidar\inc\rplidar_protocol.h" />
+    <ClInclude Include="..\Arduino\libraries\RPLidar\inc\rptypes.h" />
+    <ClInclude Include="..\Arduino\libraries\RPLidar\RPLidar.h" />
     <ClInclude Include="..\Arduino\libraries\Servo\Servo.h" />
     <ClInclude Include="..\Arduino\libraries\SonarSensor\SonarSensor.h" />
     <ClInclude Include="arduino.h">
@@ -187,6 +194,7 @@
     <Text Include="..\Arduino\libraries\Motor\keywords.txt" />
     <Text Include="..\Arduino\libraries\Radio\keywords.txt" />
     <Text Include="..\Arduino\libraries\Robot\keywords.txt" />
+    <Text Include="..\Arduino\libraries\RPLidar\keywords.txt" />
     <Text Include="..\Arduino\libraries\Servo\keywords.txt" />
     <Text Include="..\Arduino\libraries\SonarSensor\keywords.txt" />
     <Text Include="README.txt" />

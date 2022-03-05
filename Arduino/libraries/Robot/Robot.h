@@ -1,3 +1,8 @@
+/** ***************************************************************************
+ * @file
+ *
+ * @brief   Setup for the Robot class
+ *****************************************************************************/
 #ifndef ROBOT_H
 #define ROBOT_H
 
@@ -5,7 +10,13 @@
 
 #include "..\Motor\Motor.h"
 
-// */
+ /** ***************************************************************************
+  * @brief  A class for handling a simple robot with two motors. Uses the Motor
+  * class.
+  *
+  * @author  Kyle Houchin
+  * @date    02/14/2022
+  *****************************************************************************/
 class Robot
 {
     public:
@@ -17,8 +28,8 @@ class Robot
         void hult();
     private:
         
-        Motor* left_motor;
-        Motor* right_motor;
+        Motor* left_motor; //left motor class instance
+        Motor* right_motor; //right motor class instance
 };
 
 #endif

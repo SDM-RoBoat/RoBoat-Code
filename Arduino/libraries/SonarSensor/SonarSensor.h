@@ -1,8 +1,19 @@
+/** ***************************************************************************
+ * @file
+ *
+ * @brief   Setup for the Sonar class
+ *****************************************************************************/
 #ifndef SONAR_SENSOR_H
 #define SONAR_SENSOR_H
 
 #include "arduino.h"
 
+ /** ***************************************************************************
+  * @brief   A class to control one sonar sensor
+  *
+  * @author  Kyle Houchin
+  * @date    02/14/2022
+  *****************************************************************************/
 class Sonar
 {
     public:
@@ -16,12 +27,12 @@ class Sonar
     private:
         bool isValid( long distance );
         
-        int Trigger;
-        int Echo;
+        int Trigger; //pin # on arduino
+        int Echo; //pin # on arduino
 
-        bool bound_enable = false;
-        int lowerBound = 2;
-        int upperBound = 60;
+        bool bound_enable = false; //use bounding
+        int lowerBound = 2; //lowwer cutoff distance in cm
+        int upperBound = 60; //high cutoff distance in cm
 };
 
 

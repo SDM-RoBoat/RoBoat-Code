@@ -1,5 +1,17 @@
 #include "Servo.h"
 
+/** ***************************************************************************
+* @author Kyle Houchin
+*
+* @par Description:
+* this setsup servo class.
+*
+* @param[in] pin1 - servo pin 1;
+* @param[in] pin2 - servo pin 2;
+* @param[in] pin3 - servo pin 3;
+* @param[in] pin4 - servo pin 4;
+*
+*****************************************************************************/
 Servo::Servo( int pin1, int pin2, int pin3, int pin4 )
 {
     pins[0] = pin1;
@@ -13,11 +25,35 @@ Servo::Servo( int pin1, int pin2, int pin3, int pin4 )
     }
 }
 
+
+
+/** ***************************************************************************
+* @author Kyle Houchin
+*
+* @par Description:
+* this function sets the servo mode
+*
+* @param[in] m - FULL, WAVE, HALF
+*
+*****************************************************************************/
 void Servo::setMode( mode m )
 {
     curMode = m;
 }
 
+
+
+/** ***************************************************************************
+* @author Kyle Houchin
+*
+* @par Description:
+* this function converts the setp into an angle. private function.
+*
+* @param[in] step - new speed for robot -255 to 255
+*
+* @returns return angle
+*
+*****************************************************************************/
 double Servo::convertAng( double step )
 {
     if (curMode == half)
@@ -25,6 +61,20 @@ double Servo::convertAng( double step )
     return step * (360 / revSteps);
 }
 
+
+
+/** ***************************************************************************
+* @author Kyle Houchin
+*
+* @par Description:
+* continue after here
+* this function sets both motors to the newSpeed.
+*
+* @param[in] newSpeed - new speed for robot -255 to 255
+*
+* @returns false if it failed
+*
+*****************************************************************************/
 double Servo::convertStep( double angle )
 {
     if (curMode == half)
@@ -32,26 +82,107 @@ double Servo::convertStep( double angle )
     return angle / (360 / revSteps);
 }
 
+
+
+/** ***************************************************************************
+* @author Kyle Houchin
+*
+* @par Description:
+* this function sets both motors to the newSpeed.
+*
+* @param[in] newSpeed - new speed for robot -255 to 255
+*
+* @returns false if it failed
+*
+*****************************************************************************/
 double Servo::getAng()
 {
     return convertAng(currentSteps);
 }
 
+
+
+/** ***************************************************************************
+* @author Kyle Houchin
+*
+* @par Description:
+* this function sets both motors to the newSpeed.
+*
+* @param[in] newSpeed - new speed for robot -255 to 255
+*
+* @returns false if it failed
+*
+*****************************************************************************/
 double Servo::getStep()
 {
     return currentSteps;
 }
 
+
+
+/** ***************************************************************************
+* @author Kyle Houchin
+*
+* @par Description:
+* this function sets both motors to the newSpeed.
+*
+* @param[in] newSpeed - new speed for robot -255 to 255
+*
+* @returns false if it failed
+*
+*****************************************************************************/
 void Servo::stepAng(double angle)
 {
     step( convertStep( angle ) );
 }
 
+
+
+/** ***************************************************************************
+* @author Kyle Houchin
+*
+* @par Description:
+* this function sets both motors to the newSpeed.
+*
+* @param[in] newSpeed - new speed for robot -255 to 255
+*
+* @returns false if it failed
+*
+*****************************************************************************/
 void Servo::step( double step ) //need to code
 {
-    
+    if (floor( step ) != step)
+        return;
+
+    int i;
+    for (i = 0; i < step; i++)
+    {
+        if (mode == full)
+        {
+            currentSteps += 2;
+            stepTwice();
+        }
+        else
+        {
+            currentSteps++;
+            stepOnce();
+        }
+    }
 }
 
+
+
+/** ***************************************************************************
+* @author Kyle Houchin
+*
+* @par Description:
+* this function sets both motors to the newSpeed.
+*
+* @param[in] newSpeed - new speed for robot -255 to 255
+*
+* @returns false if it failed
+*
+*****************************************************************************/
 void Servo::stepOnce()
 {
     cycle++;
@@ -70,6 +201,19 @@ void Servo::stepOnce()
     delayMicroseconds(delayTimeMirco);
 }
 
+
+
+/** ***************************************************************************
+* @author Kyle Houchin
+*
+* @par Description:
+* this function sets both motors to the newSpeed.
+*
+* @param[in] newSpeed - new speed for robot -255 to 255
+*
+* @returns false if it failed
+*
+*****************************************************************************/
 void Servo::stepTwice()
 {
     cycle += 2;
@@ -81,6 +225,19 @@ void Servo::stepTwice()
     delayMicroseconds( delayTimeMirco );
 }
 
+
+
+/** ***************************************************************************
+* @author Kyle Houchin
+*
+* @par Description:
+* this function sets both motors to the newSpeed.
+*
+* @param[in] newSpeed - new speed for robot -255 to 255
+*
+* @returns false if it failed
+*
+*****************************************************************************/
 void Servo::capCycle()
 {
     if (curMode == wave) // 0 2 4 6 Note:8 is out of scope

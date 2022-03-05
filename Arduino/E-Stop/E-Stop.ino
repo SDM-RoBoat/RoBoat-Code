@@ -18,16 +18,22 @@ Radio rad;
 
 int StopPin = 7;
 int relay = 6;
+int hult_pin = 13;
 int input = 0;
 
-int dissconect_time = 2; //in mins
+double dissconect_time = 5; //in mins
 long dissconnect_time_milli;
+double hult_time = 0.5; //in mins
+long hult_time_milli;
 long last_connected_time;
+bool hult_state = false;
 
 
 void setup() {
-pinMode(relay, OUTPUT); //enables relay
-
+  pinMode(relay, OUTPUT); //enables relay
+  pinMode(hult_pin, OUTPUT); //enables relay
+  digitalWrite(hult_pin, LOW);
+  
   Serial.begin(9600);
   if ( rad.set(Hard_Stop, StopPin)==0) 
   { //If radio pin is valid
@@ -39,8 +45,10 @@ pinMode(relay, OUTPUT); //enables relay
     //Makes sure the power to the main relay is cut
     digitalWrite(relay, LOW);
   }
+  
   last_connected_time = millis();
   dissconnect_time_milli = (long)(dissconect_time*60*1000);
+  hult_time_milli = (long)(hult_time*60*1000);
 }
 
 void loop() {
@@ -57,11 +65,25 @@ void loop() {
     digitalWrite(relay, LOW);    
   }
   else if (input==-256) //disconnected
-  {
+  { 
+    //hult
+    if (millis() - last_connected_time >= hult_time_milli)
+    {
+      hult_state = true;
+      digitalWrite(hult_pin, HIGH);
+    }
+
+
+    //kill
     if (millis() - last_connected_time >= dissconnect_time_milli)
     {
-      digitalWrite(relay, LOW); 
+      digitalWrite(relay, LOW);
     }
+  }
+  else if (hult_state && input==0)
+  {
+    hult_state = false;
+    digitalWrite(hult_pin, LOW);
   }
   else
   {

@@ -30,7 +30,7 @@ class Sonar
         int Trigger; //pin # on arduino
         int Echo; //pin # on arduino
 
-        bool bound_enable = false; //use bounding
+        bool bound_enable = true; //use bounding
         int lowerBound = 2; //lowwer cutoff distance in cm
         int upperBound = 60; //high cutoff distance in cm
 };

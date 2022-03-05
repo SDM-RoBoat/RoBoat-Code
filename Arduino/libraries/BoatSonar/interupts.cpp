@@ -236,8 +236,10 @@ void zone0Setup() //pin 2
  *****************************************************************************/
 ISR( INT4_vect ) //interuput call function
 { //called when ever pin 2 changes
+    Serial.print("Worksing");
     if (!mode0)
     {
+
         zone0Start = micros();
         mode0 = !mode0;
 
@@ -265,10 +267,6 @@ long getZone( int zone)
     switch (zone)
     {
     case 0:
-        /*Serial.print("Zone0Start: ");
-        Serial.println(zone0Start);
-        Serial.print("Zone0End: ");
-        Serial.println(zone0End);*/
         return (long)(zone0End - zone0Start);
         break;
     case 1:

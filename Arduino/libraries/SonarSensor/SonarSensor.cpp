@@ -57,7 +57,7 @@ Sonar::Sonar( int triggerPin, int echoPin, int lower_bound, int upper_Bound )
     Trigger = triggerPin;
     Echo = echoPin;
 
-    setBound( lower_bound, upper_Bound )
+    setBound(lower_bound, upper_Bound);
 }
 
 
@@ -88,10 +88,16 @@ bool Sonar::getDistance( long& distance )
     result = (long)(result * 0.034 / 2.0);
     
     //bound checking
-    distance = result;
-    if (isValid( result ))
+    if (isValid(result))
+    {
+        distance = result;
         return true;
-    return false;
+    }
+    else
+    {
+        distance = -1;
+        return false;
+    }
 }
 
 

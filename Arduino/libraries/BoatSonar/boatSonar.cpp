@@ -190,23 +190,23 @@ void BoatSonar::updateBoatSonar()
             //number of pins in the zone, it will pass
             if (sizes[i] != 0)
             {
-                if (!(sizes[i]-1) > j)
+                if (sizes[i] > j)
                 {
                     //update zone, calls one trigger at a time.
-                    Zones[i]->updatezone();
-                    //Serial.println(micros());
-                    
-                    flag = true;
+                    flag = Zones[i]->updatezone();
                     //this makes sure to off set the collection so 
                     //multipule pin interupts are advodied
                     delayMicroseconds(5);
                 }
             }
         }
-        //flag is if a zone had been updated
+        //flag is if a zone has been updated
         if (flag)
+        {
             //makes sure all noze on echo pin is cleared
-            delayMicroseconds( 1000 );
+            delayMicroseconds(8000);
+           
+        }
         flag = false;
     }
 }

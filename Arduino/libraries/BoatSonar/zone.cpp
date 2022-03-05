@@ -124,21 +124,31 @@ bool zone::updatezone() //only collects the next triggers data
     long currentUpdate = millis();
 
     if ((currentUpdate - lastUpdate < SONAR_SAMPLE_RATE)) //not enought time to resample
+    {
         return false;
+    }
 
     lastUpdate = currentUpdate; //reset soft clock    if (getMode(currentzone))
     
+
+
+
     //setup next round of data
     lastTrigger++;
     if (lastTrigger >= numTriggers)
+    {
         lastTrigger = 0;
+    }
 
     //noInterrupts();
-    digitalWrite(triggerPins[lastTrigger], HIGH);
-    delayMicroseconds(10);
-    digitalWrite(triggerPins[lastTrigger], LOW);
+
     //interrupts();
 
+    Serial.print("Trigger: ");
+    Serial.print(lastTrigger);
+    Serial.print(" Time: ");
+    Serial.print(millis());
+    Serial.print(" Data: ");
 
     if(!getMode(currentzone))
     {
@@ -148,11 +158,14 @@ bool zone::updatezone() //only collects the next triggers data
     }
     else
     {
-        delay(20);
+        delay(10);
     }
 
+    Serial.println(datazone[lastTrigger]);
     //log last round of data
-    
+    digitalWrite(triggerPins[lastTrigger], HIGH);
+    delayMicroseconds(10);
+    digitalWrite(triggerPins[lastTrigger], LOW);
 
     return true;
 

@@ -122,7 +122,7 @@ bool Sonar::getAvgDistance( long& distance, int times )
 {
     //TODO: Add check for negative numbers in int times
 
-    int i;
+    int i, j;
     long temp;
     long avg = 0;
 
@@ -131,6 +131,7 @@ bool Sonar::getAvgDistance( long& distance, int times )
         getDistance(temp);
         avg += temp;
     }
+
     avg /= times;
 
     distance = avg;
@@ -208,3 +209,49 @@ void Sonar::useBound( bool value )
 {
     bound_enable = value;
 }
+
+
+/** ***************************************************************************
+* @author Jonah Morgan
+*
+* @par Description:
+* Goes through each sonar device individually to gather the average
+* distance over 'n' iterations. 
+*
+* @param[in, out] thisSonar The Sonar array to be used to get distances.
+* @param[in, out] distances The array of distances to be averaged.
+* @param[in] n The amount of iterations we want to average over. 
+* @param[in] sonar_amount The amount of sonar devices in the system.
+*
+*****************************************************************************/
+void getAvgDist(Sonar thisSonar[], long distances[], int n, int sonar_amount)
+{
+    int i, j;
+    long temp;
+
+    // initialize all the distances to zero
+    for (i = 0; i < sonar_amount; i++)
+    {
+        distances[i] = 0;
+    }
+
+    // loop 'n' amount of times
+    for (i = 0; i < n; i++)
+    {
+        // loop through each sonar device to gather distances
+        for (j = 0; j < sonar_amount; j++)
+        {
+            // get the distance at that specific sonar device
+            thisSonar[j].getDistance(temp);
+            // increment the distance at that position by temp
+            distances[j] += temp;
+        }
+    }
+
+    // calculate avg for each distance
+    for (i = 0; i < sonar_amount; i++)
+    {
+        distances[i] = distances[i] / n;
+    }
+}
+

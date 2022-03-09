@@ -32,11 +32,13 @@ class Sonar
         int Trigger; //pin # on arduino
         int Echo; //pin # on arduino
 
-        bool bound_enable = true; //use bounding
+        bool bound_enable = false; //use bounding
         int lowerBound = 2; //lowwer cutoff distance in cm
         int upperBound = 60; //high cutoff distance in cm
 };
 
 
+// Other sonar functions
+void getAvgDist(Sonar thisSonar[], long distances[], int n, int sonar_amount);
 
 #endif // !SONAR_SENSOR_H

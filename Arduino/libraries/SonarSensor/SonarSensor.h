@@ -17,6 +17,7 @@
 class Sonar
 {
     public:
+
         Sonar( int triggerPin, int echoPin );
         Sonar( int triggerPin, int echoPin, int lower_bound, int upper_Bound );
         bool getDistance( long& distance );
@@ -25,6 +26,7 @@ class Sonar
         void useBound(bool value);
 
     private:
+
         bool isValid( long distance );
         
         int Trigger; //pin # on arduino

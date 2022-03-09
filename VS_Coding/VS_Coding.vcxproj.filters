@@ -70,6 +70,9 @@
     <Filter Include="Source Files\Arduino\libraries\RPLidar\examples\distance_to_color">
       <UniqueIdentifier>{349bae81-e60d-447e-9ed7-d9f61932efeb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Arduino\jonah_sonar">
+      <UniqueIdentifier>{cd1065d3-0243-464c-93f1-b387476ff95b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Arduino\Main\Main.ino">

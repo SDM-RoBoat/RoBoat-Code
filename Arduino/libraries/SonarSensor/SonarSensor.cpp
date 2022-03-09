@@ -224,7 +224,7 @@ void Sonar::useBound( bool value )
 * @param[in] sonar_amount The amount of sonar devices in the system.
 *
 *****************************************************************************/
-void getAvgDist(Sonar thisSonar[][], long distances[], int n, int sonar_amount)
+void Sonar::getAvgDist(Sonar thisSonar[], long distances[], int n, int sonar_amount)
 {
     int i, j;
     long temp;

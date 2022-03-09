@@ -39,6 +39,6 @@ class Sonar
 
 
 // Other sonar functions
-void getAvgDist(Sonar thisSonar[], long distances[], int n, int sonar_amount);
+void getAvgDist(Sonar thisSonar[][], long distances[], int n, int sonar_amount);
 
 #endif // !SONAR_SENSOR_H

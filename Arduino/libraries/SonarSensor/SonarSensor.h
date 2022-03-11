@@ -24,8 +24,7 @@ class Sonar
         bool getAvgDistance(long &distance, int times);
         bool setBound( int lower_bound, int upper_bound );
         void useBound(bool value);
-        void getAvgDist(Sonar thisSonar[], long distances[], int n, int sonar_amount);
-
+        
     private:
 
         bool isValid( long distance );
@@ -39,6 +38,7 @@ class Sonar
 };
 
 
-// Other sonar functions
-
 #endif // !SONAR_SENSOR_H
+
+
+

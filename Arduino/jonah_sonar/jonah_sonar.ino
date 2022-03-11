@@ -1,14 +1,19 @@
 #include <SonarSensor.h>
 
 const int SONAR_AMOUNT = 6;
+const int avg_Amount = 3;
 
 int triggerPins[SONAR_AMOUNT] = {29, 31, 33, 35, 37, 39};
 int echoPins[SONAR_AMOUNT] = {38, 40, 42, 44, 46, 48};
 long distances[SONAR_AMOUNT] = {};
-
 int i;
+int j = 0;
 
 Sonar** mySonar = nullptr;
+
+long avgDist[SONAR_AMOUNT] = {0};
+void calcAvg(long avgDistances[]);
+void makeZero(long avgDistances[]);
 
 void setup() {
   
@@ -25,27 +30,40 @@ void setup() {
 
 
 void loop() {
+  ////// CALCULATING AVERAGE ///////
+  if(j >= avg_Amount) // 
+  {
+    calcAvg(avgDist);
+    j = 0; // counter reset
+  }
 
-//  INDIVIDUALLY GETTING DISTANCES  
-//
-//  for(i = 0; i < SONAR_AMOUNT; i++)
-//    {
-//      mySonar[i]->getDistance(distances[i]);
-//    }
 
-// 
-  getAvgDist(mySonar, distances, 5, SONAR_AMOUNT);
+  /////// GETTING DISTANCES ////////
+  for(i = 0; i < SONAR_AMOUNT; i++)
+  {
+    mySonar[i]->getDistance(distances[i]);
+    avgDist[i] += distances[i];
+  }
+
+  j++;
   
-  Serial.print("Son1Dist: ");
-  Serial.print(distances[0]);
-  Serial.print("    Son2Dist: ");
-  Serial.print(distances[1]);
-  Serial.print("    Son3Dist: ");
-  Serial.print(distances[2]);
-  Serial.print("    Son4Dist: ");
-  Serial.print(distances[3]);
-  Serial.print("    Son5Dist: ");
-  Serial.print(distances[4]);
-  Serial.print("    Son6Dist: ");
-  Serial.println(distances[5]);
+}
+
+
+
+void calcAvg(long avgDistances[])
+{
+   for(int i = 0; i < SONAR_AMOUNT; i++)
+    {
+      avgDistances[i] = avgDistances[i] / avg_Amount;
+      Serial.print("Son");
+      Serial.print(i + 1);
+      Serial.print("Dist: ");
+      Serial.print(avgDistances[i]);
+      Serial.print("    ");
+    }
+    
+    Serial.println();
+    for(i = 0; i < SONAR_AMOUNT; i++)
+      avgDistances[i] = 0;
 }

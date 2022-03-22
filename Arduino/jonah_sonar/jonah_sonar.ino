@@ -1,4 +1,7 @@
 #include <SonarSensor.h>
+#include <Wire.h>
+#include "SparkFun_BNO080_Arduino_Library.h"
+BNO080 roboIMU;
 
 const int SONAR_AMOUNT = 6;
 const int avg_Amount = 3;
@@ -25,6 +28,19 @@ void setup() {
     {
       mySonar[i] = new Sonar(triggerPins[i], echoPins[i], 3, 100);
     }
+
+    Wire.begin();
+
+    if (roboIMU.begin() == false)
+    {
+      Serial.println("BNO080 not detected!");
+      while (1)
+        ;
+    }
+
+    Wire.setClock(400000);
+
+    roboIMU.enableRotationVector(50);
    
 }
 
@@ -46,6 +62,21 @@ void loop() {
   }
 
   j++;
+
+  if(roboIMU.dataAvailable() == true)
+  {
+    float roll = (roboIMU.getRoll()) * 180.0 / PI; // Convert roll to degrees
+    float pitch = (roboIMU.getPitch()) * 180.0 / PI; // Convert pitch to degrees
+    float yaw = (roboIMU.getYaw()) * 180.0 / PI; // Convert yaw / heading to degrees
+
+    Serial.print(roll, 1);
+    Serial.print(F(","));
+    Serial.print(pitch, 1);
+    Serial.print(F(","));
+    Serial.print(yaw, 1);
+
+    Serial.println(); 
+  }
   
 }
 

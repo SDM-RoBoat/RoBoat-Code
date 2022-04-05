@@ -8,14 +8,10 @@ typedef short int si;
 const int SONAR_AMOUNT = 6;
 const int avg_Amount = 3;
 
-const char startSend = 'S';
-const char endSend = 'E';
+const char posIdent = 0;
+const char sonarIdent = 1;
 
-const si posIdent = 0;
-const si sonarIdent = 1;
-
-float angles[3] = {0};
-int pos[3] = {0};
+int pos3d[6] = {0};
 long distances[SONAR_AMOUNT] = {};
 
 int triggerPins[SONAR_AMOUNT] = {29, 31, 33, 35, 37, 39};
@@ -27,11 +23,12 @@ int j = 0;
 Sonar** mySonar = nullptr;
 
 long avgDist[SONAR_AMOUNT] = {0};
-void calcAvg(long avgDistances[]);
-void makeZero(long avgDistances[]);
-void sendPos(char startSend, char endSend, si identity,
-             int pos[], float angles[]);
-void sendSonar(char startSend, char endSend, si identity, long dist[], int sizeDist);
+int avgDistInt[SONAR_AMOUNT] = {0};
+void calcAvg( long avgDistances[] );
+void makeZero( long avgDistances[] );
+void sendData( char identity, int data[], int size );
+
+
 
 void setup() {
   
@@ -59,13 +56,21 @@ void setup() {
    
 }
 
-//make the send's into one function.
+
+
 void loop() {
   ////// CALCULATING AVERAGE ///////
   if(j >= avg_Amount) // 
   {
     calcAvg(avgDist);
-    sendSonar(startSend, endSend, sonarIdent, distances, SONAR_AMOUNT);
+    
+    // convert distances to regular ints.
+    for(i = 0; i < SONAR_AMOUNT; i++)
+      avgDistInt[i]  = (int)avgDist[i];
+
+    // send data.
+    sendData( sonarIdent, avgDistInt, SONAR_AMOUNT );
+    
     j = 0; // counter reset
   }
 
@@ -81,30 +86,23 @@ void loop() {
 
   if(roboIMU.dataAvailable() == true)
   {
-    float roll = (roboIMU.getRoll()) * 180.0 / PI; // Convert roll to degrees
-    float pitch = (roboIMU.getPitch()) * 180.0 / PI; // Convert pitch to degrees
-    float yaw = (roboIMU.getYaw()) * 180.0 / PI; // Convert yaw / heading to degrees
+    float roll = ((roboIMU.getRoll()) * 180.0 / PI) * 1000; // Convert roll to degrees
+    float pitch = ((roboIMU.getPitch()) * 180.0 / PI) * 1000; // Convert pitch to degrees
+    float yaw = ((roboIMU.getYaw()) * 180.0 / PI) * 1000; // Convert yaw / heading to degrees
     
-    angles[0] = roll;
-    angles[1] = pitch;
-    angles[2] = yaw;
 
-    pos[0] = roboIMU.getRawAccelX();
-    pos[1] = roboIMU.getRawAccelY();
-    pos[2] = roboIMU.getRawAccelZ();
-    
-    Serial.print(roll, 1);
-    Serial.print(F(","));
-    Serial.print(pitch, 1);
-    Serial.print(F(","));
-    Serial.print(yaw, 1);
+    pos3d[0] = roboIMU.getRawAccelX();
+    pos3d[1] = roboIMU.getRawAccelY();
+    pos3d[2] = roboIMU.getRawAccelZ();
+    pod3d[3] = (int)roll;
+    pod3d[4] = (int)pitch;
+    pos3d[5] = (int)yaw;
 
     Serial.println();
 
-    sendPos(startSend, endSend, posIdent, pos, angles);
-    
+    // send data.
+    sendData( posIdent, pos3d, 6 );
   }
-  
 }
 
 
@@ -128,33 +126,16 @@ void calcAvg(long avgDistances[])
 }
 
 
-void sendPos(char startSend, char endSend, si identity,
-             int pos[], float angles[])
+
+void sendData( char identity, int data[], int size )
 {
   int i;
-  Serial.write(startSend);
+  Serial.write('S');
   Serial.write(identity);
   
-  for(i = 0; i < 3; i++)
-    Serial.write(pos[i]);
-  for(i = 0; i<3; i++)
-    Serial.write(angles[i]);
-    
-  Serial.write(endSend);
-}
-
-
-
-void sendSonar(char startSend, char endSend, si identity, 
-               long dist[], int sizeDist)
-{
-  int i;
-  Serial.write(startSend);
-  Serial.write(identity);
-  Serial.write(sizeDist);
-
-  for(i = 0; i< sizeDist; i++)
-    Serial.write(dist[i]);
-
-  Serial.write(endSend);
+  for(i = 0; i < size; i++)
+    Serial.write(data[i]);
+  
+  Serial.write(millis());
+  Serial.write('E');
 }

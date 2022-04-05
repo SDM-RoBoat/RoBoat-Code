@@ -132,6 +132,7 @@ void sendData( char identity, int data[], int size )
   int i;
   Serial.write('S');
   Serial.write(identity);
+  Serial.write(size);
   
   for(i = 0; i < size; i++)
     Serial.write(data[i]);

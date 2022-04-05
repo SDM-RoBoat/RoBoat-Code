@@ -18,6 +18,7 @@ data_t storage[MAX_COLLECTION_SIZE] = {0};
 int i = 0; //current spot in stroage
 float angle  = 0; //this is the angle colleted from sensor.
 
+char lidarIdent = 2;
 
 //function Decloartions
 bool sendData();
@@ -54,12 +55,18 @@ void loop()
 
 bool sendData()
 {
+    Serial.write('S');
+    Serial.write(lidarIdent);
     byte* ptr = (byte*) &storage;
     byte counter = sizeof(storage);
+    Serial.write(counter);
+    
     do {
       byte m = (byte*)*ptr;
       mySerial.write(m);
       ptr++;
       counter--; 
     } while (counter != 0);
+
+    Serial.write('E');
 }

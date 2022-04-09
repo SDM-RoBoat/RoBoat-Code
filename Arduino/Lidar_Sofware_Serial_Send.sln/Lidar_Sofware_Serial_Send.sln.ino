@@ -86,8 +86,8 @@ bool sendData()
     mySerial.write('S');
     mySerial.write(lidarIdent);
     byte* ptr = (byte*) &storage;
-    byte counter = sizeof(storage);
-    mySerial.write(counter);
+    int counter = sizeof(storage);
+    mySerial.print(counter);
     
     do {
       byte m = (byte*)*ptr;

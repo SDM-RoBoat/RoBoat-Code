@@ -154,7 +154,7 @@ NChannel_properties = [106.390, 64988.199, -393.555, -0.015, 2999.45, -2.372, 64
 A_0_Lookup = {"A-0-Red", "A-0-Blue", "A-0-Green", "A-0-Yellow"}
 A_0_properties = [4.173, 39.822, 0, 0, 24.606, 0, 39.822, 0, 4, 0, 0, 0, 0]
 A_2_Lookup = {"A-2-Red", "A-2-Green", "A-2-Blue", "A-2-Yellow"}
-A_2_properties = [23.513, 645.402, 0, 0, 462.859, 0, 645.402, 0, 0, 0, 0, 0, 0]
+A_2_properties = [23.513, 645.402, 0, 0, 462.859, 0, 645.402, 0, 7.25, 0, 0, 0, 0]
 
 
 def deg_rad_convert(deg):

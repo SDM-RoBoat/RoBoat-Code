@@ -19,3 +19,6 @@ gazebo_world_creator/main.py
 gazebo_world_creator/.idea/vcs.xml
 gazebo_world_creator/.idea/misc.xml
 gazebo_world_creator/RoboBoat_0.world
+*.ipt
+*.mtl
+*.iam

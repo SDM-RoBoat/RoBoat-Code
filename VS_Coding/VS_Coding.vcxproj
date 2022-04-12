@@ -166,6 +166,7 @@
     <ClCompile Include="..\Arduino\libraries\SonarSensor\SonarSensor.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="arduino.cpp" />
+    <ClCompile Include="PID.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Arduino\libraries\BoatSonar\boatSonar.h" />
@@ -188,6 +189,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="keywords.txt" />
+    <ClInclude Include="PID.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Arduino\libraries\IR_Sensor\keywords.txt" />

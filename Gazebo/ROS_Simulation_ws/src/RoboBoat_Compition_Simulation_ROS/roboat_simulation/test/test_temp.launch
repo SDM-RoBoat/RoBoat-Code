@@ -1,0 +1,3 @@
+<launch>
+  <test test-name="test_temp" pkg="roboat_simulation" type="test_temp.py" />
+</launch>

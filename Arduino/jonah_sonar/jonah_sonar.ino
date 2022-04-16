@@ -8,8 +8,8 @@ typedef short int si;
 const int SONAR_AMOUNT = 6;
 const int avg_Amount = 3;
 
-const char posIdent = 0;
-const char sonarIdent = 1;
+const char posIdent = 'p';
+const char sonarIdent = 'i';
 
 int pos3d[6] = {0};
 long distances[SONAR_AMOUNT] = {};
@@ -46,13 +46,13 @@ void setup() {
     if (roboIMU.begin() == false)
     {
       Serial.println("BNO080 not detected!");
-      while (1)
-        ;
+      while (1);
     }
 
     Wire.setClock(400000);
 
     roboIMU.enableRotationVector(50);
+    roboIMU.enableRawAccelerometer(50);
    
 }
 
@@ -91,11 +91,11 @@ void loop() {
     float yaw = ((roboIMU.getYaw()) * 180.0 / PI) * 1000; // Convert yaw / heading to degrees
     
 
-    pos3d[0] = roboIMU.getRawAccelX();
-    pos3d[1] = roboIMU.getRawAccelY();
-    pos3d[2] = roboIMU.getRawAccelZ();
-    pod3d[3] = (int)roll;
-    pod3d[4] = (int)pitch;
+    pos3d[0] = (int)roboIMU.getRawAccelX();
+    pos3d[1] = (int)roboIMU.getRawAccelY();
+    pos3d[2] = (int)roboIMU.getRawAccelZ();
+    pos3d[3] = (int)roll;
+    pos3d[4] = (int)pitch;
     pos3d[5] = (int)yaw;
 
     Serial.println();
@@ -112,11 +112,11 @@ void calcAvg(long avgDistances[])
    for(int i = 0; i < SONAR_AMOUNT; i++)
     {
       avgDistances[i] = avgDistances[i] / avg_Amount;
-      Serial.print("Son");
-      Serial.print(i + 1);
-      Serial.print("Dist: ");
-      Serial.print(avgDistances[i]);
-      Serial.print("    ");
+//      Serial.print("Son");
+//      Serial.print(i + 1);
+//      Serial.print("Dist: ");
+//      Serial.print(avgDistances[i]);
+//      Serial.print("    ");
     }
     
     Serial.println();
@@ -130,13 +130,20 @@ void calcAvg(long avgDistances[])
 void sendData( char identity, int data[], int size )
 {
   int i;
-  Serial.write('S');
-  Serial.write(identity);
-  Serial.write(size);
-  
+  Serial.print('S');
+  Serial.print(" ");
+  Serial.print(identity);
+  Serial.print(" ");
+  Serial.print(size);
+  Serial.print(" ");
   for(i = 0; i < size; i++)
-    Serial.write(data[i]);
+  {
+    Serial.print(data[i]);
+    Serial.print(" ");
+  }
   
-  Serial.write(millis());
-  Serial.write('E');
+  Serial.print(millis());
+  Serial.print(" ");
+  Serial.print('E');
+  Serial.println();
 }

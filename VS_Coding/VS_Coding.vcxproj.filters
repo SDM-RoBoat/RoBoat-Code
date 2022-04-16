@@ -73,6 +73,9 @@
     <Filter Include="Source Files\Arduino\jonah_sonar">
       <UniqueIdentifier>{cd1065d3-0243-464c-93f1-b387476ff95b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Arduino\libraries\PID">
+      <UniqueIdentifier>{4ab04ef4-26c2-4edf-9c39-a8b53271ac16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Arduino\Main\Main.ino">
@@ -131,6 +134,9 @@
     <ClCompile Include="..\Arduino\libraries\RPLidar\RPLidar.cpp">
       <Filter>Source Files\Arduino\libraries\RPLidar</Filter>
     </ClCompile>
+    <ClCompile Include="PID.cpp">
+      <Filter>Source Files\Arduino\libraries\PID</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Arduino\libraries\IR_Sensor\IR_Sensor.h">
@@ -177,6 +183,9 @@
     </ClInclude>
     <ClInclude Include="..\Arduino\libraries\RPLidar\inc\rptypes.h">
       <Filter>Source Files\Arduino\libraries\RPLidar\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="PID.h">
+      <Filter>Source Files\Arduino\libraries\PID</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

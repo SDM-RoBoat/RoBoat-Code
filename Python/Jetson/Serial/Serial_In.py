@@ -44,11 +44,11 @@ def handle_one_serial(ser):
 
 
 def sonar(ser):
-    size = ser.read()
+    size = ser.read(2)
     data = []
 
     for i in range(size):
-        value = ser.read()
+        value = ser.read(2)
         data.append(int(value))
 
     if ser.read() != 'e':
@@ -58,12 +58,16 @@ def sonar(ser):
 
 
 def imu(ser):
-    size = ser.read()
+    size = ser.read(2)
     data = []
 
     for i in range(size):
-        value = ser.read()
-        data.append(int(value))
+        if(i < 3):
+            value = ser.read(2) / 1000   
+        else:
+            value = ser.read(2)
+            
+    data.append(int(value))
 
     if ser.read() != 'e':
         print("Issue reading data")
@@ -72,7 +76,7 @@ def imu(ser):
 
 
 def lidar(ser):
-    size = ser.read()
+    size = ser.read(2)
     data = []
     for i in range(size):
         x = ser.read(2)

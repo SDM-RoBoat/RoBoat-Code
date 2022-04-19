@@ -130,20 +130,12 @@ void calcAvg(long avgDistances[])
 void sendData( char identity, int data[], int size )
 {
   int i;
-  Serial.print('S');
-  Serial.print(" ");
-  Serial.print(identity);
-  Serial.print(" ");
-  Serial.print(size);
-  Serial.print(" ");
+  Serial.write('s');
+  Serial.write(identity);
+  Serial.write(size);
   for(i = 0; i < size; i++)
   {
-    Serial.print(data[i]);
-    Serial.print(" ");
+    Serial.write(data[i]);
   }
-  
-  Serial.print(millis());
-  Serial.print(" ");
-  Serial.print('E');
-  Serial.println();
+  Serial.write('e');
 }

@@ -83,11 +83,11 @@ void loop()
 
 bool sendData()
 {
-    mySerial.write('S');
+    mySerial.write('s');
     mySerial.write(lidarIdent);
     byte* ptr = (byte*) &storage;
     int counter = sizeof(storage);
-    mySerial.print(counter);
+    mySerial.write(counter);
     
     do {
       byte m = (byte*)*ptr;
@@ -96,5 +96,5 @@ bool sendData()
       counter--; 
     } while (counter != 0);
 
-    mySerial.write('E');
+    mySerial.write('e');
 }

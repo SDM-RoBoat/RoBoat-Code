@@ -48,12 +48,12 @@ class get_serial:
 
         return serial_data
 
-    def sonar(self, ser):
-        size = ser.read()
+    def sonar(ser):
+        size = ser.read(2)
         data = []
 
         for i in range(size):
-            value = ser.read()
+            value = ser.read(2)
             data.append(int(value))
 
         if ser.read() != 'e':
@@ -61,21 +61,25 @@ class get_serial:
 
         return data
 
-    def imu(self, ser):
-        size = ser.read()
+    def imu(ser):
+        size = ser.read(2)
         data = []
 
         for i in range(size):
-            value = ser.read()
-            data.append(int(value))
+            if (i < 3):
+                value = ser.read(2) / 1000
+            else:
+                value = ser.read(2)
+
+        data.append(int(value))
 
         if ser.read() != 'e':
             print("Issue reading data")
 
         return data
 
-    def lidar(self, ser):
-        size = ser.read()
+    def lidar(ser):
+        size = ser.read(2)
         data = []
         for i in range(size):
             x = ser.read(2)

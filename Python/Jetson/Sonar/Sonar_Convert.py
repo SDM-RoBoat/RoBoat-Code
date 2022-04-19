@@ -65,6 +65,7 @@ def create_sensors(image_size, length_per_side, scale):
 
 # (pixel, pixel), meter, #, meter
 def process_point(image_size, length_per_side, sonar_number, value):
+    # print(f"image_size = {image_size} | lenght_per_side = {length_per_side} | sonar_number = {sonar_number} | value = {value}")
     (x, y), angle = get_model(sonar_number)
     x = convert.meters_pixels(image_size[0], length_per_side[0], x)
     y = convert.meters_pixels(image_size[1], length_per_side[1], y)
@@ -82,16 +83,17 @@ def process_point(image_size, length_per_side, sonar_number, value):
     return x_total, y_total
 
 
-def process_sonar(image_size, length_per_side, args):
+def process_sonar(image_size, length_per_side, sensor_data):
     sonar = []
     # sensor values
-    for i in range(len(args)):
+    for i in range(len(sensor_data)):
         if i > 10:
             print(F"Process_Sonar: Unable to map sonar # {i + 1}")
             exit(1)
 
-        if args[i] != 0:
-            x, y = process_point(image_size, length_per_side, i+1, args[i]/100)
+        if sensor_data[i] != 0:
+            # print(f"sensor_data[{i}] = {sensor_data[i]} | type: {type(sensor_data[i])}")
+            x, y = process_point(image_size, length_per_side, i + 1, sensor_data[i] / 100)
             x, y = convert.translate(x, y, int(image_size[0] / 2), int(image_size[1] / 2))
 
             if 0 <= x < image_size[0]:

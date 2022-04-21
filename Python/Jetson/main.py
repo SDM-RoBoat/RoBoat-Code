@@ -1,6 +1,7 @@
 from Jetson.Serial.Serial_Out import serial_out
 from Jetson.Serial.Serial_In import serial_in
 from Jetson.Serial.Process_Serial import process_serial
+import Serial.Serial_Out
 
 
 
@@ -23,13 +24,18 @@ image_size = (300, 300)
 length_per_side = (6, 6)
 
 
+# def main():
+#     print(process_serial(fake_serial))
+#     # world = np.zeros([image_size[0], image_size[1]])
+#     # for (x, y, i) in sonar:
+#     #     world[x][y] = i
+#     # cv2.imwrite('test.jpeg', world)
+#     return 0
+
 def main():
-    print(process_serial(fake_serial))
-    # world = np.zeros([image_size[0], image_size[1]])
-    # for (x, y, i) in sonar:
-    #     world[x][y] = i
-    # cv2.imwrite('test.jpeg', world)
-    return 0
+    ser = Serial()
+    while True:
+        ser.serial_out(12)
 
 
 if __name__ == '__main__':

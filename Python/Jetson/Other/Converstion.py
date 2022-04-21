@@ -16,6 +16,12 @@ def polar_rectangular(l, angle):
     return [x, y]
 
 
+def rectangular_polar(x, y):
+    r = np.sqrt(x*x + y*y)
+    theda = np.arctan(y/x)
+    return [r, theda]
+
+
 # pixel is the number of pixels in an x or y direction
 # length is the represented length in meters in an x or y direction
 # value is the item to be converted
@@ -38,5 +44,3 @@ def scale(value, percent):
 
 def translate(x, y, x_offset, y_offset):
     return x_offset+x, y_offset+y
-
-

@@ -10,7 +10,7 @@ def process_serial(serial_data):
     for (id_handle, sensor_data) in serial_data:
         print(f"ID_Handle: {id_handle}, sensor_data: {sensor_data}")
         if id_handle == 's':
-            temp = sonar((300, 300), (3, 3), sensor_data)
+            temp = sonar(sensor_data)
             for obj in temp:
                 data_sonar.append(obj)
         elif id_handle == 'i':

@@ -32,7 +32,6 @@
  *  used as a soft stop 
  */
 
-#include <Coordinates.h>
 #include <Radio.h>
 #define Hard_Stop Radio::AUX1
 Radio rad;
@@ -89,12 +88,17 @@ int input = 0;
 void setup() {
   pinMode(relay, OUTPUT); //enables relay
   pinMode(hult_pin, OUTPUT); //enables relay
+  pinMode(l_motor_pin, OUTPUT);
+  pinMode(r_motor_pin, OUTPUT);
   digitalWrite(hult_pin, LOW);
   
   Serial.begin(9600);
 
-  Radio setup
-  if ( rad.set(Hard_Stop, StopPin)==0) 
+  Radio setup;
+  if (rad.set(Radio::Throttle, speed_pin) != 0 || rad.set(Radio::Rudder, turn_pin) != 0 || rad.set(Radio::Gear, modePin) != 0)
+    return -897;
+  
+  if ( rad.set(Hard_Stop, StopPin) == 0) 
   { 
     //If radio pin is valid powers main relay
     digitalWrite(relay,HIGH); 
@@ -117,7 +121,8 @@ void setup() {
 
 
 void loop() {
-  input = rad.read(Gear);
+  input = rad.read(Radio::Gear);
+
   
   //Detirmine mode from the flight mode switch
   if(input == 2)
@@ -134,8 +139,8 @@ void loop() {
     yellowLight();
 
     //read in speed from controller
-    speed_value = rad.read(Throttle, speed_pin);
-    turn_value = rad.read(Rudder, turn_pin);
+    speed_value = rad.read(Radio::Throttle);
+    turn_value = rad.read(Radio::Rudder);
 
     //convert to motor speeds
     r_speed = speed_value + turn_value;
@@ -206,8 +211,6 @@ void eStop(){
     if (millis() - last_connected_time >= dissconnect_time_milli)
       kill();
   }
-  else if (hult_state && input==0)
-    //activate();
   else
     last_connected_time = millis();
 }

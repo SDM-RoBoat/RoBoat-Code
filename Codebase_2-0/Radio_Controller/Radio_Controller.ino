@@ -62,7 +62,7 @@ int modePin = 3;
 int speed_pin = 11;
 int turn_pin = 12;
 int relay = 6;
-int hult_pin = 7;
+int light_pin = 7;
 int l_motor_pin = 9;
 int r_motor_pin = 10;
 
@@ -87,10 +87,10 @@ int input = 0;
 
 void setup() {
   pinMode(relay, OUTPUT); //enables relay
-  pinMode(hult_pin, OUTPUT); //enables relay
+  pinMode(light_pin, OUTPUT); //enables relay
   pinMode(l_motor_pin, OUTPUT);
   pinMode(r_motor_pin, OUTPUT);
-  digitalWrite(hult_pin, LOW);
+  digitalWrite(light_pin, HIGH);
   
   Serial.begin(9600);
 
@@ -108,10 +108,7 @@ void setup() {
     //If the radio did not get a valid pin the main relay is cut
     digitalWrite(relay, LOW);
   }
-
-  //makes sure E-STOP is checked constantally
-  attachInterrupt(digitalPinToInterrupt(StopPin), eStop, CHANGE);
-
+  
   //sets up dissconection thresholds
   last_connected_time = millis();
   dissconnect_time_milli = (long)(dissconect_time*60*1000);
@@ -120,19 +117,10 @@ void setup() {
 
 
 
-void loop() {
-  input = rad.read(Radio::Gear);
-
+void loop() { 
+  mode();
+  eStop();
   
-  //Detirmine mode from the flight mode switch
-  if(input == 2)
-    is_ai = true;
-  else if(input == 1)
-    is_ai = false;
-  else
-    soft_stop = true;
-
-    
   //Read in data
   if (is_ai == false)
   {
@@ -162,40 +150,58 @@ void loop() {
   else 
   {
     greenLight();
-    
-    noInterrupts();
-    while(Serial.read() != 255);
+
+    while(Serial.available() != 0 && Serial.read() != 255);
     
     //read in speed from computer
     r_speed = Serial.read();
     l_speed = Serial.read();
-    interrupts();
   }
 
   //write motor speeds
-  analogWrite(l_motor_pin, l_speed);
-  analogWrite(r_motor_pin, r_speed);
-   
+  //analogWrite(l_motor_pin, l_speed);
+  //analogWrite(r_motor_pin, r_speed);
+  Serial.println(r_speed);
+  Serial.println(l_speed);
+
+  Serial.println(speed_value);
+  Serial.println(turn_value);
+  
 }
 
 
 
 void greenLight() {
-  digitalWrite(hult_pin, LOW);
+  digitalWrite(light_pin, HIGH);
 }
 
 void yellowLight() {
-  digitalWrite(hult_pin, HIGH);
+  digitalWrite(light_pin, LOW);
 }
 
 void kill() {
   digitalWrite(relay, LOW); 
 }
 
+void mode(){
+  input = rad.read(Radio::Gear);
+  
+  //Detirmine mode from the flight mode switch
+  soft_stop = false;
+  is_ai = false;
+  if(input == 2)
+    is_ai = true;
+  else if(input == 1)
+    is_ai = false;
+  else
+    soft_stop = true;
+}
+
 void eStop(){
-  //Note: if radio gets disconneted the code does not do anything NOT SURE IF THIS IS STILL TRUE
-  //TODO: test and fix if needed
+  //TODO: if radio gets disconneted the code does not do anything 
   input = rad.read(Hard_Stop);
+
+  //Serial.println(input);
   
   if (input!=0 && input!=-256) // true or pressed .read return 0 on high 
   {

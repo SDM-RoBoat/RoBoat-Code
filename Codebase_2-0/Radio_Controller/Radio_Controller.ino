@@ -197,8 +197,7 @@ void mode(){
     soft_stop = true;
 }
 
-void eStop(){
-  //TODO: if radio gets disconneted the code does not do anything 
+void eStop(){ 
   input = rad.read(Hard_Stop);
 
   //Serial.println(input);

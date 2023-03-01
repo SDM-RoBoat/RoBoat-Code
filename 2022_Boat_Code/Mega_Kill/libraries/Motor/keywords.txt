@@ -1,0 +1,3 @@
+Motor	KEYWORD1
+setSpeed	KEYWORD2
+hult	KEYWORD2

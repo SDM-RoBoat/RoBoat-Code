@@ -34,9 +34,9 @@ public:
     void setScale(int new_scale);
 
 private:
-    int low = 1200;     //MEASURED LOW VALUE FOR MOST OUTPUTS
-    int zero = 1500;    //MEASURED ZERO VALUE
-    int high = 1800;    //MEASURED HIGH VALUE
+    int low = 1181;     //MEASURED LOW VALUE FOR MOST OUTPUTS
+    int zero = 1490;    //MEASURED ZERO VALUE
+    int high = 1795;    //MEASURED HIGH VALUE
     int pin_low = 1100;
     int pin_mid = zero;
     int pin_high = 1900;

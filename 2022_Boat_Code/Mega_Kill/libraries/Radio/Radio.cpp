@@ -151,7 +151,7 @@ int Radio::readThrottle(int pin)
     int duration = pulseIn(pin, HIGH);
 
     //translate to consistent scale
-    int output = map(duration, 973, 1915, 0, scale);
+    int output = map(duration, 1060, 1918, 0, scale);
 
     if (output > scale)
         return scale;

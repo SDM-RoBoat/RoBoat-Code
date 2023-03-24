@@ -34,9 +34,12 @@ public:
     void setScale(int new_scale);
 
 private:
-    int low = 1000;     //MEASURED LOW VALUE FOR MOST OUTPUTS
-    int zero = 1400;    //MEASURED ZERO VALUE
-    int high = 1800;    //MEASURED HIGH VALUE
+    int low = 1181;     //MEASURED LOW VALUE FOR MOST OUTPUTS
+    int zero = 1490;    //MEASURED ZERO VALUE
+    int high = 1795;    //MEASURED HIGH VALUE
+    int pin_low = 1100;
+    int pin_mid = zero;
+    int pin_high = 1900;
     int input_setup[6]; //pins for a given channel
     int scale = 255; //the scale for outputing analog value
 

@@ -151,7 +151,7 @@ int Radio::readThrottle(int pin)
     int duration = pulseIn(pin, HIGH);
 
     //translate to consistent scale
-    int output = map(duration, 973, 1915, 0, scale);
+    int output = map(duration, 1060, 1918, 0, scale);
 
     if (output > scale)
         return scale;
@@ -163,7 +163,7 @@ int Radio::readThrottle(int pin)
  *
  * @par Description:
  * Using a pin location reads in the duration of the pulse and outputs the
- * duration scaled from -127 to 127 
+ * duration scaled from -255 to 255 
  *
  * @param[in] pin - the location that the reciver is connected 
  *
@@ -177,7 +177,7 @@ int Radio::readJoystick(int pin)
     int duration = pulseIn(pin, HIGH);
 
     //translate to consistent scale
-    return map(duration, low, high, -scale/2, scale/2);
+    return map(duration, low, high, -scale, scale);
 }
 
 /** ***************************************************************************
@@ -201,12 +201,13 @@ int Radio::readSwitch(int pin)
     int output = pulseIn(pin, HIGH);
 
     //translate to consistent scale
-    if (abs(output - low) < 100)
+    if (abs(output - pin_low) < 200)
         return 2;
-    else if (abs(output - zero) < 100)
+    else if (abs(output - pin_mid) < 200)
         return 1;
-    else if (abs(output - high) < 100)
+    else if (abs(output - pin_high) < 200)
         return 0;
     else
         return -256;
 }
+

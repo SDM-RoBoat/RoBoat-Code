@@ -22,3 +22,6 @@ gazebo_world_creator/RoboBoat_0.world
 *.ipt
 *.mtl
 *.iam
+2022_Boat_Code/Mega_Kill/libraries/Radio/.vs/ProjectSettings.json
+2022_Boat_Code/Mega_Kill/libraries/Radio/.vs/Radio/v17/Browse.VC.db
+2022_Boat_Code/Mega_Kill/libraries/Radio/.vs/slnx.sqlite

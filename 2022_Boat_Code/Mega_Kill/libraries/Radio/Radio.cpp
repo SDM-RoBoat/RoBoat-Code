@@ -201,11 +201,11 @@ int Radio::readSwitch(int pin)
     int output = pulseIn(pin, HIGH);
 
     //translate to consistent scale
-    if (abs(output - low) < 100)
+    if (abs(output - pin_low) < 200)
         return 2;
-    else if (abs(output - zero) < 100)
+    else if (abs(output - pin_mid) < 200)
         return 1;
-    else if (abs(output - high) < 100)
+    else if (abs(output - pin_high) < 200)
         return 0;
     else
         return -256;

@@ -1,26 +1,25 @@
-/*This Code is for the Hard-Eletronic-Stop
- * When the button on AUX1 is pressed it will trun off
+/*
+ * This Code is for the Hard-Eletronic-Stop
+ * When the panic button (AUX1) is pressed it will turn off
  * a relay that is hooked to the main relay cut off chain.
  * This will kill power to the relay that goes to mains power.
  * 
- * The arduino will not reset untill the E-Stop Circit is 
- * manually reset. 
+ * The arduino will also kill power if the reciver disconnects.
  * 
- * Note: This is NOT the Soft-Stop!
- * This will require a full reboot of the boat
+ * The arduino will reset if the panic button is clicked again.
+ * 
  */
 
 
 #include <Radio.h>
-#define Hard_Stop Radio::AUX1
+#define stop_channel Radio::AUX1
 
-Radio rad;
+Radio receiver;
 //used to store result from radio
-int input = 0;
-
-
-int RadioStopPin = 7;
-int relay_KillPin = 6;
+int receiver_input;
+int receiver_input_pin = 7;
+int relay_kill_pin = 6;
+bool is_stopped = false;
 
 //time for signal issues with radio before preminate disconect
 double dissconect_time = 0.5; //in sec
@@ -31,55 +30,65 @@ long last_connected_time;
 
 
 void setup() {
-  pinMode(relay_KillPin, OUTPUT); //pinmode for Relay
-  digitalWrite(relay_KillPin, LOW); //off by defult
+  pinMode(relay_kill_pin, OUTPUT); //pinmode for Relay
+  digitalWrite(relay_kill_pin, LOW); //off by defult
 
   Serial.begin(9600);
 
   Serial.println("Startup");
+
   
-  
-  while( rad.set(Hard_Stop, RadioStopPin)!=0 )
-  { //If the radio did not get a valid pin
-    //Makes sure the power to the main relay is cut
-    digitalWrite(relay_KillPin, LOW);
+  //Makes sure the power to the main relay is cut if the radio did not get a valid pin
+  if( receiver.set(stop_channel, receiver_input_pin)!= 0 )
+  { 
+    digitalWrite(relay_kill_pin, LOW);
+    Serial.println("Bad pin and/or channel");
   }
 
-  Serial.println("Detected reciver");
 
+  //waits till the controller connects
+  while( receiver.read(stop_channel)!= 0 ) 
+  { 
+    digitalWrite(relay_kill_pin, LOW);
+  }
+
+  
   //radio connected
   //Give power to the main relay
-  digitalWrite(relay_KillPin,HIGH);
-  
-  last_connected_time = millis();
-
-  
+  Serial.println("Detected reciver"); 
+  digitalWrite(relay_kill_pin,HIGH);
 }
 
 
 void loop() {
-  input = rad.read(Hard_Stop);
+  receiver_input = receiver.read(stop_channel);
   Serial.print("Input: ");
-  Serial.println(input);
-  
-  if (input!=0 && input!=-256) // Pressed kill button on radio
-  {
+  Serial.println(receiver_input);
 
-    Serial.println("Kill Button Pressed");
-    digitalWrite(relay_KillPin, LOW);    
-  }
-  else if (input==-256) //disconnected form radio breafly
-  { 
-    //kill (radio desconected to long)
-    if (millis() - last_connected_time >= dissconnect_time_milli)
-    {
-      Serial.println("Time out");
-      digitalWrite(relay_KillPin, LOW);
-    }
-    
-  }
-  else //kill not hit and still connected to radio
+  // Pressed kill button or controller disconected
+  if (receiver_input != 0 && is_stopped == false)  
   {
-    last_connected_time = millis();
+    Serial.println("Kill Button Pressed");
+    digitalWrite(relay_kill_pin, LOW); 
+    is_stopped = true; 
+    delay(1000);  
+  }  
+  // Pressed the kill button while remote is disconected 
+  else if (receiver_input == 2 && is_stopped) 
+  {
+      delay(250);
+      
+      // Makes sure the controller is conected and that the button was tapped and not held
+      if (receiver.read(stop_channel) == 0) 
+      {
+        digitalWrite(relay_kill_pin, HIGH);
+        is_stopped = false;
+      }
   }
+  else 
+  {
+    //shouldn't happen but may if the reciver is changed
+    Serial.println("error unreached");
+  }
+
 }

@@ -1,0 +1,13 @@
+C++ MakeFiles
+
+https://www.gnu.org/software/make/manual/make.html
+https://automaticaddison.com/cpp-fundamentals-for-robotics/
+
+
+-CMake
+sudo apt-get install cmake
+
+https://automaticaddison.com/cpp-fundamentals-for-robotics/
+https://cmake.org/cmake/help/latest/guide/tutorial/A%20Basic%20Starting%20Point.html
+
+sudo apt install python3-h5py libhdf5-serial-dev hdf5-tools libpng-dev libfreetype6-dev

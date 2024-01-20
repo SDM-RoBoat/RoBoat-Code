@@ -1,0 +1,49 @@
+windos:
+------------------------------------------------------------------------------------------------
+share internet over ethernet cord to jetson nano
+Control Panel
+-Network and sharing Center
+	-right click wi-fi
+	-go to properties in new pop up
+	-click sharing tab
+	-check allow other network user to connect thought this computer Internet connection
+	-select port in drop down
+	-save and exit
+
+Connects Host pc internet to jetson though ethernet cord.
+
+------------------------------------------------------------------------------------------------
+Connecting to Jeston nano
+
+arp -a
+  Interface Interface: 192.168.137.1 --- 0x27
+  Internet Address      Physical Address      Type
+  192.168.137.107       00-04-4b-ec-3e-01     static
+  192.168.137.122       00-04-4b-ec-3e-01     dynamic
+  192.168.137.255       ff-ff-ff-ff-ff-ff     static
+  224.0.0.22            01-00-5e-00-00-16     static
+  224.0.0.251           01-00-5e-00-00-fb     static
+  224.0.0.252           01-00-5e-00-00-fc     static
+  239.255.255.250       01-00-5e-7f-ff-fa     static
+  255.255.255.255       ff-ff-ff-ff-ff-ff     static
+
+jetson ip: 192.168.137.122 <- note this sould be static
+
+------------------------------------------------------------------------------------------------
+
+vnc viewer: Visual desktop
+just type in jetsons ip
+pass jetbot
+
+winSCP: Visual file share
+jetbot@192.168.137.122, port 22
+name jetbot
+pass jetbot
+
+PuTTy: SSH
+jetbot@192.168.137.122
+type password when shh starts
+pass: jetbot
+
+https://demotomohiro.github.io/hardware/jetson_tk1/setup/remote_wo_router.html
+https://couka.de/2020/10/25/jetson-nano-direct-ethernet-connection-for-ssh-vnc-etc/

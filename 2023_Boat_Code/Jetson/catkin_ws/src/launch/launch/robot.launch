@@ -1,0 +1,13 @@
+<launch>
+    <node  name="mega"   pkg="rosserial_python"  type="serial_node.py">
+        <param name="~port"  value="/dev/ttyACM0"/>
+        <param name="~baud"  value="250000"/>
+    </node>
+
+    <node pkg="motor_control" name="motor_driver_node" type="motor_driver.py" output="screen"/>
+    
+    <node name="ik_control_node" pkg="motor_control" type="ik.py" output="screen"/>
+
+    <node name="radio_controler_node" pkg="motor_control" type="radio_controler.py" output="screen"/>
+
+</launch>

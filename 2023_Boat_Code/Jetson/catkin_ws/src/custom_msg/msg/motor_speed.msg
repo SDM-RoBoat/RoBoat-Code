@@ -1,0 +1,2 @@
+int16 leftMotor
+int16 rightMotor
